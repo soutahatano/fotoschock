@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.header{
+  width: 100vw;
+  height: 100px;
+  text-align: center;
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+
+  &__title{
+    font-size: 30px;
+    color: #FFFFFF;
+    text-align: center;
+    height: 100%;
+    line-height: 100px;
+  }
+}
+
+.wrapper{
+  height: calc(100vh - 100px);
+  width: 100vw;
+  display: flex;
+}
+
+.menu-bar{
+  width: 350px;
+  height: 100%;
+  background-color: red;
+  padding: 70px 30px 0;
+  &__list{
+    &__content{
+      height: 35px;
+      line-height: 35px;
+      margin-bottom: 5px;
+      background-color: #FFFFFF;
+    }
+  }
+}
+.main-posts{
+  width: 100vw;
+  padding: 20px 20px 0;
+  // background-color: #141c18;
+  background-color: #FFFFFF;
+  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+  .post{
+    background:url(https://peonyqueen.files.wordpress.com/2015/10/cork02.jpg);
+    &__title{
+      // background-color: beige;
+    }
+    &__image{
+      width: 100%;
+      height: auto;
+      background-color: blue;
+    }
+    &__info{
+      display: flex;
+      justify-content: space-between;
+      &__user{
+        background-color: cadetblue;
+        width: 100%;
+      }
+      &__day{
+        background-color: coral;
+      }
+    }
+    &__details{
+      &__tag{
+        background-color: cornsilk;
+      }
+      &__adress{
+        background-color: cyan;
+      }
+    }
+    &__action{
+      display: flex;
+      justify-content: space-between;
+      &__good-btn{
+        background-color: darkblue;
+        width: 50%;
+      }
+      &__comment{
+        background-color: darkcyan;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.right-bar{
+  width: 700px;
+  background-color: rebeccapurple;
+}
+.ranking{
+  padding: 20px 20px 0;
+  &__topic{
+    .ranker{
+      &__rank{
+
+      }
+    }
+  }
+}
+
+.user-box{
+  display: flex;
+  &__image{
+    margin-right: 5px;
+  }
+  &__name{
+
+  }
+}
