@@ -9,9 +9,13 @@
         .menu-bar__list__content
           検索
     %li
-      = link_to do
+      = link_to edit_user_path(current_user) do
         .menu-bar__list__content
-          設定
+          yu-za-編集
+    %li
+      = link_to new_post_path do
+        .menu-bar__list__content
+          投稿
     %li
       = link_to do
         .menu-bar__list__content
