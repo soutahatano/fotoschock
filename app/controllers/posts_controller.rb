@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all
   end
 
   def new
@@ -11,8 +12,13 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user)
+  end
+
   private
   def post_params
-    params.permit(:image, :text, :pref_id, :city_id).merge(user_id: current_user.id)
+    params.require(:post).permit(:image, :text, :pref_id, :city_id).merge(user_id: current_user.id)
   end
 end

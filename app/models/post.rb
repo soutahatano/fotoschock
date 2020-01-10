@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :pref
-  belongs_to :city
+  belongs_to :pref, optional: true
+  belongs_to :city, optional: true
   has_many :goods
   has_many :comments
   has_many :post_tags

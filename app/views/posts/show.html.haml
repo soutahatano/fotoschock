@@ -1,0 +1,33 @@
+.post
+  .post__title
+    text
+  .post__image
+    gazou
+  .post__info
+    = link_to do
+      .post__info__user
+        = render "shared/usericon"
+    .post__info__day
+      hiduke
+  .post__details
+    .post__details__tag
+      = link_to do
+        タグ
+    .post__details__adress
+      = link_to do
+        住所
+  .post__action
+    .post__action__good-btn
+      = link_to do
+        %i.far.fa-thumbs-up
+    .post__action__comment-btn
+      = link_to new_comment_path(post_id: @post.id) do
+        %i.far.fa-comment-dots
+- @comments.each do |comment|
+  .comment
+    .comment__user
+      = render "shared/usericon"
+    .coment__text
+      = comment.text
+    = link_to new_comment_path(comment_id: comment.id) do
+      %i.far.fa-comment-dots
