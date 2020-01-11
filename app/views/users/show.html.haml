@@ -1,10 +1,16 @@
+- unless current_user.id == @user_id.to_i
+  - if current_user.following?(@user_id)
+    = form_for(current_user.relationships.find_by(follow_id: @user_id), html: { method: :delete }) do |f|
+      = f.hidden_field :follow_id, value: @user_id
+      = f.submit 'フォロー中', class: 'follow-now'
+  - else
+    = form_for(current_user.relationships.build) do |f|
+      = f.hidden_field :follow_id, value: @user_id
+      = f.submit 'フォロー', class: 'follows'
 - @messages.each do |message|
   = message.text
 = form_for [@message] do |f|
   = f.text_field :text, placeholder: 'type a message'
-  -# = f.hidden_field :to_id, value: @user_id
-  -# = f.hidden_feild :from_id, value: current_user.id
-  -# = f.hidden_field :room_id, value: @room_id
   = f.hidden_field :to_id, value: @user_id
   = f.hidden_field :from_id, value: current_user.id
   = f.hidden_field :room_id, value: @room_id

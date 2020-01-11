@@ -8,9 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
     @user_id = params[:user]
-    
     @room_id = message_room_id(current_user, params[:user])
     @message = Message.new
     @messages = Message.recent_in_room(@room_id)

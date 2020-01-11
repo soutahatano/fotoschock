@@ -12,7 +12,7 @@ class User < ApplicationRecord
   belongs_to :pref
   belongs_to :city
   has_many :goods, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   has_many :from_messages, class_name: "Message", foreign_key: "from_id", dependent: :destroy
@@ -20,7 +20,23 @@ class User < ApplicationRecord
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
 
-  def send_message(other_user, room_id, content)
-    from_messages.create!(to_id: other_user.id, room_id: room_id, text: text)
+  def send_message(other_user_id, room_id, content)
+    from_messages.create!(to_id: other_user_id, room_id: room_id, text: text)
+  end
+
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_user_id)
+    user = User.find(other_user_id)
+    self.followings.include?(user)
   end
 end

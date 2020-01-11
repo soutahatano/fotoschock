@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show, :create, :new]
   resources :comments, only: [:index, :show, :create, :new]
   resources :messages, only: [:create]
+  resources :relationships, only: [:create, :destroy]
 end
