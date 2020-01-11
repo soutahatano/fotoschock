@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @comment = Comment.create(text: comment_params[:text], post_id: comment_params[:post_id], comment_id: comment_params[:comment_id], user_id: current_user.id)
     redirect_to root_path
   end
