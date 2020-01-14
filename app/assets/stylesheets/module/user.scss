@@ -1,141 +1,120 @@
+.edit_user{
+  width: 100%;
+  display: flex;
+}
+
 .account-page {
-  .account-page__inner {
-    width: 980px;
-    margin: 60px auto;
-    padding: 60px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-
-    .account-page__inner--left, .account-page__inner--right {
-      float: left;
-      width: 50%;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0e0e;
+  &-edit{
+    height: 90vh;
+    width: 100vw;
+  }
+  &__introduct{
+    width: 50%;
+    border-right: double white;
+    &__title{
+      color: #fafafa;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 70px;
+      text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #00eaff,
+      0 0 70px #00eaff,
+      0 0 80px #00efff,
+      0 0 100px #00efff,
+      0 0 150px #00efff,
+      0 0 200px #00ffff,
     }
-    &:after {
-      clear: both;
-      content: "";
-      display: block;
+    &__sentence{
     }
   }
-
-  .account-page__header {
-    h2 {
-      margin-bottom: 10px;
-      letter-spacing: 3px;
-      font-size: 40px;
-      font-weight: 200;
-
-      &:after {
-        content: '';
-        display: block;
-        width: 60px;
-        margin-top: 5px;
-        border-bottom: 1px solid #38aef0;
-      }
+  &__info{
+    width: 50%;
+    color: #eeeeee;
+    &__header{
+      text-align: center;
+      margin: 80px 0 50px;
+      font-size: 24px;
     }
-
-    h5 {
-      margin-bottom: 20px;
-      font-size: 14px;
-      font-weight: 200;
-    }
-
-    .btn {
-      margin-top: 20px;
-      color: #fff;
-      background-color: #ccc;
-      font-size: 14px;
-    }
-  }
-
-  .field {
-    margin-bottom: 10px;
-
-    .field-label {
-      padding: 10px 0;
-      letter-spacing: 1px;
-      font-size: 14px;
-      font-weight: 200;
-
-      i {
-        font-size: 11px;
-      }
-    }
-
-    .field-input {
-      input {
-        width: 100%;
-        padding: 10px;
-        letter-spacing: 1px;
-      }
-    }
-  }
-
-  .btn {
-    display: inline-block;
-    height: 50px;
-    padding: 0 30px;
-    line-height: 50px;
-    letter-spacing: 1px;
-    text-align: center;
-    border: none;
-    border-radius: 2px;
-  }
-
-  input[type='submit'] {
-    float: left;
-    margin-top: 20px;
-    color: #fff;
-    background-color: #38aef0;
-  }
-
-  .field-label {
-    .field_with_errors {
-      display: inline-block;
-      color: #d65f4c;
-      font-weight: 400;
-    }
-  }
-
-  .field-input {
-    .field_with_errors {
-      position: relative;
-
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 5px;
-        background-color: #d65f4c;
+    &__user-form{
+      .field{
+        text-align: center;
+        margin-bottom: 40px;
+        &-label{
+          margin-bottom: 5px;
+        }
       }
     }
   }
 }
+.create-action-btn{
+  display       : inline-block;
+  border-radius : 11%;
+  font-size     : 20pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 12px 27px;
+  background    : rgba(26, 26, 255, 0.92);
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  border        : 2px solid rgba(26, 26, 255, 0.92);
+}
+.create-action-btn:hover {
+  color         : rgba(26, 26, 255, 0.92);
+  background    : #ffffff;
+}
 
-#error_explanation {
-  margin: 20px 0;
-  padding: 20px 30px;
-  border: 1px solid #ddd;
-  border-radius: 2px;
 
-  h2 {
-    margin-bottom: 10px;
-    color: #d65f4c;
-    font-size: 14px;
-  }
+.link{
+  align-items: center;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  background-color: #090909;
+}
 
-  ul {
-    margin: 0;
-    padding-left: 17px;
-    list-style: square;
-  }
-
-  li {
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
-  }
+a.move-btn {
+  line-height: 20px;
+	display: block;
+  position: relative;
+  height: 40px;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #090909;
+	border:1px solid aqua;
+	background: aqua;
+	overflow: hidden;
+	z-index: 1 !important;
+}
+a.move-btn:after {
+	content:"";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 0;
+	width: 100%;
+	background : #090909;
+	opacity: 0;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transition: 0.3s;
+	z-index: -1;
+}
+a.move-btn:hover {
+	color: aqua;
+}
+.move-btn:hover:after {
+	height: 250%;
+	opacity: 1;
+}
+.move-btn:active:after {
+	height: 350%;
+	opacity: 1;
 }

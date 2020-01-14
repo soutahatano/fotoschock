@@ -7,6 +7,8 @@ class Message < ApplicationRecord
   validates :to_id, presence: true
   validates :room_id, presence: true
   validates :text, presence: true, length: {maximum: 50}
+  
+  
 
   def Message.recent_in_room(room_id)
     where(room_id: room_id).last(500)

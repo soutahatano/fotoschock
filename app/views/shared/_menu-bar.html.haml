@@ -2,21 +2,49 @@
   %ul.menu-bar__list
     %li
       = link_to do
-        .menu-bar__list__content
+        %i.fa.fa-image
+        %span
           ホーム
+      %ul
+        %li
+          = link_to do
+            %i.fa.fa-home
+            %span
+              ho-me
     %li
       = link_to do
-        .menu-bar__list__content
+        %i.fa.fa-home
+        %span
           検索
+      %ul
+        %li
+          = link_to do
+            %i.fa.fa-home
+            %span
+              ho-me
     %li
       = link_to edit_user_path(current_user) do
-        .menu-bar__list__content
+        %i.fa.fa-home
+        %span
           yu-za-編集
+      %ul
+        %li
+          = link_to do
+            %i.fa.fa-home
+            %span
+              ho-me
+        %li
+          = link_to do
+            %i.fa.fa-home
+            %span
+              ho-me
     %li
       = link_to new_post_path() do
-        .menu-bar__list__content
+        %i.fa.fa-home
+        %span
           投稿
     %li
       = link_to users_path() do
-        .menu-bar__list__content
+        %i.fa.fa-home
+        %span
           DM

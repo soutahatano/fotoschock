@@ -2,11 +2,11 @@
   - if current_user.following?(@user_id)
     = form_for(current_user.relationships.find_by(follow_id: @user_id), html: { method: :delete }) do |f|
       = f.hidden_field :follow_id, value: @user_id
-      = f.submit 'フォロー中', class: 'follow-now'
+      = f.submit 'フォロー中'
   - else
     = form_for(current_user.relationships.build) do |f|
       = f.hidden_field :follow_id, value: @user_id
-      = f.submit 'フォロー', class: 'follows'
+      = f.submit 'フォロー'
 - @messages.each do |message|
   = message.text
 = form_for [@message] do |f|

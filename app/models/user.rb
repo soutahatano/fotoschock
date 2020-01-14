@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
   
-  belongs_to :pref
-  belongs_to :city
+  belongs_to :pref, optional: true
+  belongs_to :city, optional: true
   has_many :goods, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :to_messages, class_name: "Message", foreign_key: "to_id", dependent: :destroy
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
+
+  mount_uploader :image, ImagesUploader
 
   def send_message(other_user_id, room_id, content)
     from_messages.create!(to_id: other_user_id, room_id: room_id, text: text)
@@ -39,4 +41,5 @@ class User < ApplicationRecord
     user = User.find(other_user_id)
     self.followings.include?(user)
   end
+
 end

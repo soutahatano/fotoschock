@@ -3,15 +3,15 @@
     = link_to post_path(post) do
       .post
         .post__title
-          text
+          = post.text
         .post__image
-          gazou
+          = image_tag post.image.url
         .post__info
           = link_to do
             .post__info__user
               = render "shared/usericon"
           .post__info__day
-            hiduke
+            = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
         .post__details
           .post__details__tag
             = link_to do
@@ -21,8 +21,15 @@
               住所
         .post__action
           .post__action__good-btn
-            = link_to do
-              %i.far.fa-thumbs-up
+          
+            - unless current_user == post.user
+              - if post.good?(current_user)
+                = form_for(post.goods.find_by(user_id: current_user.id), method: :delete) do |f|
+                  = f.button 'Good_delete'
+              - else
+                = form_for(post.goods.build) do |f|
+                  = f.hidden_field :post_id, value: post.id
+                  = f.button 'Good'
           .post__action__comment-btn
             = link_to new_comment_path(post_id: post.id) do
               %i.far.fa-comment-dots

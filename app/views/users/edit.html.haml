@@ -1,21 +1,48 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Edit Account
-      %h5 アカウントの編集
-      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
-      = link_to "トップページに戻る", :back, class: 'btn'
-    .account-page__inner--right.user-form
-      = form_for(current_user) do |f|
+.account-page.account-page-edit
+  = form_for(current_user) do |f|
+    .account-page__info
+      .account-page__info__header
+        %h5 アカウントの編集
+      .account-page__info__user-form
         .field
           .field-label
             = f.label :name
-          .field-input
-            = f.text_field :name, autofocus: true
+            %i (本名不可)
+          = f.text_field :name, autofocus: true, size: 40
         .field
           .field-label
             = f.label :email
-          .field-input
-            = f.email_field :email
-        .actions
-          = f.submit "Update", class: 'btn'
+          = f.email_field :email, size: 40
+        .field
+          .field-label
+            = f.label :password
+            %i (英数字8文字以上)
+          = f.password_field :password, autocomplete: "off", size: 40
+        .field
+          .field-label
+            = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "off", size: 40
+        .field
+          = f.submit "Update", class: 'create-action-btn'
+    .account-page__info
+      .account-page__info__user-form
+        .field
+          .field-label
+            = f.label :imsge
+            %i icon
+          = f.file_field :image, autofocus: true
+        .field
+          都道府県
+          = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
+        .field
+          市区町村
+          = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
+        .field
+          .field-label
+            = f.label :text
+            %i 200文字まで
+          = f.text_area :text, autofocus: true, size: 40
+        
+.link
+  = link_to "LogOut", destroy_user_session_path, method: :delete, class: 'move-btn'
+  = link_to "TopPage", :back, class: 'move-btn'

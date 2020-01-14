@@ -18,17 +18,25 @@ img {
   width: 100vw;
   height: 100px;
   text-align: center;
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
   display: flex;
   justify-content: space-around;
+  background-color: #0f0e0e;
   &__title{
     font-size: 30px;
-    color: #FFFFFF;
+    color: #fafafa;
     text-align: center;
     height: 100%;
     line-height: 100px;
-    width: 90vh;
+    width: 90vw;
+    text-shadow: 0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 30px #fff,
+    0 0 40px #00eaff,
+    0 0 70px #00eaff,
+    0 0 80px #00efff,
+    0 0 100px #00efff,
+    0 0 150px #00efff,
+    0 0 200px #00ffff,
   }
   &__login{
     margin-top: 40px;
@@ -42,38 +50,32 @@ img {
   height: calc(100vh - 100px);
   width: 100vw;
   display: flex;
+  background-color: #101010;
 }
 
-.menu-bar{
-  width: 350px;
-  height: 100%;
-  background-color: #FFFFFF;
-  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
-  padding: 70px 30px 0;
-  &__list{
-    &__content{
-      height: 35px;
-      line-height: 35px;
-      margin-bottom: 5px;
-      background-color: #FFFFFF;
-    }
-  }
-}
 .main-posts{
-  width: 100vw;
+  // width: 100vw;
+  width: 900px;
   padding: 20px 20px 0;
-  // background-color: #141c18;
-  background-color: #FFFFFF;
-  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+  overflow: scroll;
   .post{
-    background:url(https://peonyqueen.files.wordpress.com/2015/10/cork02.jpg);
+    background-color: #dddddd;
+    width:800px;
+    margin-bottom: 20px;
     &__title{
       // background-color: beige;
+      height: 30px;
+      font-size: 25px;
+      color: rgb(14, 14, 14);
+      line-height: 30px;
+      text-align: center;
     }
     &__image{
-      width: 100%;
+      border: solid rgb(7, 7, 7);
+      background-color: rgb(7, 7, 7);
+      width: 800px;
       height: auto;
-      background-color: blue;
+      text-align: center;
     }
     &__info{
       display: flex;
@@ -110,12 +112,11 @@ img {
 }
 
 .right-bar{
-  width: 700px;
-  background-color: #FFFFFF;
-  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+  // width: 100%;
+
 }
 .ranking{
-  padding: 20px 20px 0;
+  // padding: 20px 20px 0;
   &__topic{
     .ranker{
       &__rank{

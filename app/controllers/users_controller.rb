@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :pref_id, :city_id, :image, :text)
   end
 
   def message_room_id(first_user, second_user)
