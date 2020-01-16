@@ -6,8 +6,7 @@
       .account-page__info__user-form
         .field
           .field-label
-            = f.label :name
-            %i (本名不可)
+            = f.label :name, "ニックネーム"
           = f.text_field :name, autofocus: true, size: 40
         .field
           .field-label
@@ -24,25 +23,28 @@
           = f.password_field :password_confirmation, autocomplete: "off", size: 40
         .field
           = f.submit "Update", class: 'create-action-btn'
-    .account-page__info
+    .account-page__info.account-page__info-edit
       .account-page__info__user-form
+        .files-edit
+          .icon_box
+            - if current_user.persisted? && current_user.image?
+              = image_tag current_user.image.thumb
+            - else
+              = image_tag 'no_avatar.png'
+          = f.label :image, class: 'icon_box'
+        = f.file_field :image
         .field
           .field-label
-            = f.label :imsge
-            %i icon
-          = f.file_field :image, autofocus: true
-        .field
-          都道府県
+            = f.label :pref_id, "都道府県"
           = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
         .field
-          市区町村
+          .field-label
+            = f.label :city_id, "市区町村"
           = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
         .field
           .field-label
-            = f.label :text
-            %i 200文字まで
-          = f.text_area :text, autofocus: true, size: 40
-        
+            = f.label :text, "自己紹介文(200字以内)"
+          = f.text_area :text, autofocus: true, size: "50*40"
 .link
   = link_to "LogOut", destroy_user_session_path, method: :delete, class: 'move-btn'
-  = link_to "TopPage", :back, class: 'move-btn'
+  = link_to "TopPage", root_path, class: 'move-btn'

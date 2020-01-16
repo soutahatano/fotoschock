@@ -33,15 +33,15 @@ class ImagesUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [500, 500]
   # end
   version :thumb do
-    process :resize_to_limit => [300, 300]
+    process resize_to_limit: [300, 300]
   end
    
   version :thumb100 do
-    process :resize_to_limit => [100, 100]
+    process resize_to_limit: [100, 100]
   end
  
   version :thumb30 do
-    process :resize_to_limit => [30, 30]
+    process resize_to_limit: [30, 30]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -50,9 +50,10 @@ class ImagesUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "something.jpg" if original_filename
+  end
 end

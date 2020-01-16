@@ -59,14 +59,14 @@ img {
   padding: 20px 20px 0;
   overflow: scroll;
   .post{
-    background-color: #dddddd;
+    background-color: rgb(14, 14, 14);
     width:800px;
     margin-bottom: 20px;
     &__title{
       // background-color: beige;
       height: 30px;
       font-size: 25px;
-      color: rgb(14, 14, 14);
+      color: #dddddd;
       line-height: 30px;
       text-align: center;
     }
@@ -79,33 +79,52 @@ img {
     }
     &__info{
       display: flex;
-      justify-content: space-between;
-      &__user{
-        background-color: cadetblue;
+      // justify-content: ;
+      margin: 3px 20px;
+
+      &__user-box{
         width: 100%;
+        display: flex;
+        &__icon{
+          height: 50px;
+          width: 50px;
+        }
+        &__name{
+          line-height: 50px;
+          margin: 0 30px;
+          font-size: 20px;
+          color: #dddddd;
+        }
       }
       &__day{
-        background-color: coral;
+        color: #dddddd;
+        line-height: 50px;
       }
     }
     &__details{
       &__tag{
-        background-color: cornsilk;
+
       }
       &__adress{
-        background-color: cyan;
+        display: flex;
+        margin: 0 80px;
+        &__pref-city{
+          color: #dddddd;
+          margin-right: 30px;
+        }
       }
     }
     &__action{
       display: flex;
-      justify-content: space-between;
       &__good-btn{
-        background-color: darkblue;
-        width: 50%;
+        margin-top: 3px;
+        margin-left: 30px;
       }
       &__comment{
-        background-color: darkcyan;
-        width: 50%;
+      }
+      .good-number{
+        margin: auto 10px;
+        color: #ff8800;
       }
     }
   }
@@ -134,4 +153,36 @@ img {
   &__name{
 
   }
+}
+
+
+.good-btn {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+  color: #00ffff;
+  font-size: 10px;
+	width: 90px;
+	height: 60px;
+	line-height: 60px;
+	border: double 4px #00ffff;
+	border-radius: 50%;
+	vertical-align: middle;
+	overflow: hidden;
+  transition: .6s;
+  background-color: rgb(7, 7, 7);
+  cursor: pointer;
+}
+#good-btn-delete{
+  color: #ff8800;
+  border: double 4px #ff8800;
+}
+.good-btn:hover {
+	transform: rotateY(360deg);
+}
+.sinup-mov{
+  margin: 130px 0;
+}
+#sign-up{
+  margin: 0 auto;
 }
