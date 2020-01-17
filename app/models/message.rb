@@ -11,6 +11,6 @@ class Message < ApplicationRecord
   
 
   def Message.recent_in_room(room_id)
-    where(room_id: room_id).last(500)
+    where(room_id: room_id).last(50)
   end
 end

@@ -1,7 +1,0 @@
-<%= form_for [@post] do |f|%>
-  <%= f.text_field :text, placeholder: 'type a message' %>
-  <%= f.file_field :image %>
-  <%= f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true %>
-  <%= f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true %>
-  <%= f.submit 'Send' %>
-<% end %>

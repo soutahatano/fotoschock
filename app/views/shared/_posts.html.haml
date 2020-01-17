@@ -39,7 +39,7 @@
                   = f.hidden_field :post_id, value: post.id
                   = f.submit 'Good', class: 'good-btn'
           .good-number
-            - if post.good?(current_user)
+            - if post.user == current_user || post.good?(current_user)
               = post.goods.length
             - else
               = post.goods.length - 1

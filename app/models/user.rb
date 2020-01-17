@@ -42,4 +42,11 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+  def good
+    self.good_count += 1
+  end 
+
+  def delgood
+    self.good_count -= 1
+  end
 end

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user_id = params[:user]
+    @user = User.find(@user_id)
     @room_id = message_room_id(current_user, params[:user])
     @message = Message.new
     @messages = Message.recent_in_room(@room_id)

@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20200110105023) do
     t.string   "image"
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
+    t.integer  "good_count",                           default: 0,  null: false
     t.integer  "pref_id"
     t.integer  "city_id"
     t.string   "reset_password_token"

@@ -9,6 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.integer :good_count,        null: false, default: 0
       t.references :pref,           foreign_key: true
       t.references :city,           foreign_key: true
 
