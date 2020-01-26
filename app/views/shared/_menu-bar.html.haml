@@ -2,49 +2,39 @@
   %ul.menu-bar__list
     %li
       = link_to root_path do
-        %i.fa.fa-image
+        %i.fa.fa-home
         %span
           ホーム
-      %ul
-        %li
-          = link_to do
-            %i.fa.fa-home
-            %span
-              ho-me
-    %li
-      = link_to do
-        %i.fa.fa-home
-        %span
-          検索
-      %ul
-        %li
-          = link_to do
-            %i.fa.fa-home
-            %span
-              ho-me
-    %li
-      = link_to edit_user_path(current_user) do
-        %i.fa.fa-home
-        %span
-          yu-za-編集
-      %ul
-        %li
-          = link_to do
-            %i.fa.fa-home
-            %span
-              ho-me
-        %li
-          = link_to do
-            %i.fa.fa-home
-            %span
-              ho-me
     %li
       = link_to new_post_path do
-        %i.fa.fa-home
+        %i.fa.fa-image
         %span
           投稿
+      %ul
+        %li
+          = link_to sachdemo_posts_path do
+            %i.far.fa-window-restore
+            %span
+              投稿一覧
     %li
-      = link_to users_path() do
-        %i.fa.fa-home
+      = link_to search_users_path do
+        %i.fas.fa-align-justify
         %span
-          DM
+          ユーザー一覧
+      %ul
+        %li
+          = link_to users_path do
+            %i.far.fa-address-book
+            %span
+              フォロー一覧
+    %li
+      = link_to edit_user_path(current_user) do
+        %i.fas.fa-user-cog"
+        %span
+          ユーザー編集
+      %ul
+        %li
+          = link_to destroy_user_session_path, method: :delete do
+            %i.fas.fa-sign-out-alt
+            %span
+              ログアウト

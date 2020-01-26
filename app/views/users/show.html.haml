@@ -70,10 +70,14 @@
                     = f.hidden_field :post_id, value: post.id
                     = f.submit 'Good', class: 'good-btn'
             .post__action__comment-btn
-              = link_to new_comment_path(post_id: post.id) do
-                -# %i.comment-btn.far.fa-comment-dots
+              %a.modal{href: "#modalp#{post.id}"}
                 .good-btn
                   Comment
+              .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
+                = form_for [@comment] do |f|
+                  = f.text_field :text, placeholder: 'type a message'
+                  = f.hidden_field :post_id, value: post.id
+                  = f.submit "サブミット"
   .user-show-dm
     .user-show-dm__messages
       - @messages.each do |message|
@@ -94,5 +98,3 @@
             = f.hidden_field :from_id, value: current_user.id
             = f.hidden_field :room_id, value: @room_id
             = f.submit 'Send'
-
-

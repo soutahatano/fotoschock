@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
+    @ranking_users = User.order('good_count DESC').limit(10)
+    @comment = Comment.new
+    @post = Post.new
   end
 
   def new
@@ -14,7 +17,40 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:user)
+    @comments = @post.comments.includes(:user).order("created_at DESC")
+    @comment = Comment.new
+  end
+
+  def search
+    @post = Post.new
+    @comment = Comment.new
+    @posts = Post.search_title(post_params[:text])
+    @result = ""
+    if post_params[:pref_id] != ""  && @posts != []
+      # binding.pry
+      @posts = @posts.search_pref(post_params[:pref_id])
+    end
+    if post_params[:city_id] != "" && @posts != []
+      # binding.pry
+      @posts = @posts.search_city(post_params[:city_id])
+    end
+    if @posts == [] 
+      @posts = Post.all
+      @result = "検索結果なし"
+      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    elsif @posts.where(id: Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)) == []
+      @result = "Good獲得はいません"
+      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    else
+      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    end
+  end
+
+  def sachdemo
+    @post = Post.new
+    @comment = Comment.new
+    @posts = Post.all
+    @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
   end
 
   private

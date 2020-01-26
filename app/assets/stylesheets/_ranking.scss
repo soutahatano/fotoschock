@@ -1,0 +1,53 @@
+.rank-box{
+  display: flex;
+  &__icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
+}
+ol.cp_clist {
+	counter-reset: cp_clist;
+	list-style: none;
+	padding: 0.5em;
+}
+ol.cp_clist ol{
+	margin: 0 0 0 35px;
+	padding: 0em;
+}
+.cp_clist li {
+	position: relative;
+	display: block;
+	padding: 4px 4px 4px 31px;
+	margin: 7px 0;
+	background: #0032bbbb;
+	color: #333;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: all .3s ease-out;
+}
+.cp_clist li::before{
+	counter-increment: cp_clist;
+	content: counter(cp_clist);
+	position: absolute;
+	top: 50%;
+	left: -15px;
+	padding: 0 0.2em 0 0.2em;
+	margin-top: -15px;
+	height: 28px;
+	width: 28px;
+	font-weight: bold;
+	background: #3F51B5;
+	color: #dddddd;
+	border: 3px solid #191919;
+	text-align: center;
+	border-radius: 50%;
+	transition: all .3s ease-out;
+}
+.cp_clist li:hover{
+	background: #00dd00;
+}
+.cp_clist li:hover::before{
+	left: -10px;
+	transform: rotate(360deg);
+}

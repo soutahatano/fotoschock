@@ -1,5 +1,0 @@
-= form_for [@comment] do |f|
-  = f.text_field :text, placeholder: 'type a message'
-  = f.hidden_field :post_id, value: @comment.post_id
-  = f.hidden_field :comment_id, value: @comment.comment_id
-  = f.submit "サブミット"

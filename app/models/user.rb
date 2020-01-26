@@ -49,4 +49,9 @@ class User < ApplicationRecord
   def delgood
     self.good_count -= 1
   end
+
+  def self.search(search)
+    return User.all unless search
+    self.where('name LIKE(?)', "%#{search}%")
+  end
 end

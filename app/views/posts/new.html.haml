@@ -4,24 +4,37 @@
       .account-page__introduct__title
         FotoShock
     .account-page__introduct__sentence
-  = form_for [@post] do |f|
-    .post-form
-      .post-field
-        .post-field-label
-          = f.label :text, "Title 6文字以下"
-        = f.text_field :text, size: 12
-      .post-field
-        .post-field-image
-          .image-box
-            = image_tag 'no_avatar.png'
-          = f.label :image, class: 'image-box'
-        = f.file_field :image
-      .post-field
-        .post-field-label
-          = f.label :pref_id, "都道府県(任意)"
-        = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
-      .post-field
-        .post-field-label
-          = f.label :city_id, "市区町村(任意)"
-        = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
-      = f.submit '投稿', class: 'cp_button03'
+      %p.sence.sence-post
+        あなたが投稿するのは
+      %p.sence.sence-post
+        一枚の画像と六文字の言葉
+      %p.sence.sence-post
+        一度放ったら還らぬ世界に
+      %p.sence.sence-post
+        全てをかける覚悟はできたか
+      %p.sence.sence-post.sence-posta
+        刻め世界に
+      %p.sence.sence-post.sence-posta
+        刻め心に
+  .right-new
+    = form_for [@post] do |f|
+      .post-form
+        .post-field
+          .post-field-label
+            = f.label :text, "Title 6文字以下"
+          = f.text_field :text, size: 12
+        .post-field
+          .post-field-image
+            .image-box#image-box
+              = image_tag 'no_avatar.png'
+            = f.label :image, class: 'image-box'
+          = f.file_field :image, id: 'post_image'
+        .post-field
+          .post-field-label
+            = f.label :pref_id, "都道府県(任意)"
+          = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
+        .post-field
+          .post-field-label
+            = f.label :city_id, "市区町村(任意)"
+          = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
+        = f.submit '投稿', class: 'cp_button03'

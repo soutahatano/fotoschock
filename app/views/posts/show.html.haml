@@ -1,33 +1,79 @@
-.post
-  .post__title
-    text
-  .post__image
-    gazou
-  .post__info
-    = link_to do
-      .post__info__user
-        = render "shared/usericon"
-    .post__info__day
-      hiduke
-  .post__details
-    .post__details__tag
-      = link_to do
-        タグ
-    .post__details__adress
-      = link_to do
-        住所
-  .post__action
-    .post__action__good-btn
-      = link_to do
-        %i.far.fa-thumbs-up
-    .post__action__comment-btn
-      = link_to new_comment_path(post_id: @post.id) do
-        %i.far.fa-comment-dots
-- @comments.each do |comment|
-  .comment
-    .comment__user
-      = render "shared/usericon"
-    .coment__text
-      = comment.text
-    = link_to new_comment_path(comment_id: comment.id) do
-      %i.far.fa-comment-dots
+.header
+  = link_to root_path do
+    .header__title
+      FotoShock
+.user-show-body
+  = render "shared/menu-bar"
+  .user-show-posts
+    = link_to post_path(@post) do
+      .post
+        .post__main
+          .post__main__title
+            = @post.text
+          .post__main__image
+            = image_tag @post.image.url
+          = link_to user_path(@post.user, user: @post.user) do
+            .post__show__user-box
+              .post__show__user-box__icon
+                = image_tag @post.user.image.thumb100
+              .post__show__user-box__name
+                = @post.user.name
+          .post__main__info
+            .post__main__info__day
+              = @post.created_at.strftime("%Y年%m月%d日 %H時%M分")
+          .post__main__details
+            .post__main__details__adress
+              - if @post.pref_id?
+                = link_to do
+                  .post__main__details__adress__pref-city
+                    = @post.pref.name
+              - if @post.city_id?
+                = link_to do
+                  .post__main__details__adress__pref-city
+                    = @post.city.name
+        .post__action
+          .good-number
+            = @post.goods.length
+            good!
+          .post__action__good-btn
+            - unless current_user == @post.user
+              - if @post.good?(current_user)
+                = form_for(@post.goods.find_by(user_id: current_user.id), method: :delete) do |f|
+                  = f.submit 'Good_delete', class: 'good-btn', id: 'good-btn-delete'
+              - else
+                = form_for(@post.goods.build) do |f|
+                  = f.hidden_field :post_id, value: @post.id
+                  = f.submit 'Good', class: 'good-btn'
+          .post__action__comment-btn
+            %a.modal{href: "#modalp#{@post.id}"}
+              .good-btn
+                Comment
+            .comment-modal{id: "modalp#{@post.id}", style: "display:none;"}
+              = form_for [@comment] do |f|
+                = f.text_field :text, placeholder: 'type a message'
+                = f.hidden_field :post_id, value: @post.id
+                = f.submit "サブミット"
+  .user-show-comment
+    - @comments.each do |comment|
+      .comment__content{id: "comment#{comment.id}"}
+        .comment__content__box
+          = link_to user_path(comment.user, user: comment.user) do
+            .comment__user__box
+              .coment__user__box__icon
+                = image_tag comment.user.image.thumb30
+              .coment__user__box__name
+                = comment.user.name
+          .comment__inf
+            .coment__inf__day
+              = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
+            %a.modal{href: "#modalm#{comment.id}"}
+              %i.coment__inf__icon.far.fa-comment-dots
+            .comment-modal{id: "modalm#{comment.id}", style: "display:none;"}
+              = form_for [@comment] do |f|
+                = f.text_field :text, placeholder: 'type a message'
+                = f.hidden_field :comment_id, value: comment.id
+                = f.submit "サブミット"
+            .icon-okiba
+              %i.fas.fa-chevron-down{data: {comment: {id: comment.id}}}
+        .coment__text
+          = comment.text

@@ -2,33 +2,27 @@
   - @posts.each do |post|
     = link_to post_path(post) do
       .post
-        .post__title
-          = post.text
-        .post__image
-          = image_tag post.image.url
-        .post__info
-          = link_to do
-            .post__info__user-box
-              .post__info__user-box__icon
-                = image_tag post.user.image.thumb100
-              .post__info__user-box__name
-                = post.user.name
-          .post__info__day
-            = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
-        .post__details
-          .post__details__adress
-            - if post.pref_id?
-              = link_to do
-                .post__details__adress__pref-city
-                  = post.pref.name
-            - if post.city_id?
-              = link_to do
-                .post__details__adress__pref-city
-                  = post.city.name
-          -# .post__details__tag
-          -#   = link_to do
-          -#     タグ
+        .post__main
+          .post__title
+            = post.text
+          .post__image
+            = image_tag post.image.url
+          .post__info
+            = link_to user_path(post.user, user: post.user) do
+              .post__info__user-box
+                .post__info__user-box__icon
+                  = image_tag post.user.image.thumb100
+                .post__info__user-box__name
+                  = post.user.name
+            .post__info__day
+              = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
         .post__action
+          .good-number
+            - if post.user == current_user || post.good?(current_user)
+              = post.goods.length
+            - else
+              = post.goods.length
+            good!
           .post__action__good-btn
             - unless current_user == post.user
               - if post.good?(current_user)
@@ -38,14 +32,22 @@
                 = form_for(post.goods.build) do |f|
                   = f.hidden_field :post_id, value: post.id
                   = f.submit 'Good', class: 'good-btn'
-          .good-number
-            - if post.user == current_user || post.good?(current_user)
-              = post.goods.length
-            - else
-              = post.goods.length - 1
-            good!
           .post__action__comment-btn
-            = link_to new_comment_path(post_id: post.id) do
-              -# %i.comment-btn.far.fa-comment-dots
+            %a.modal{href: "#modalp#{post.id}"}
               .good-btn
                 Comment
+            .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
+              = form_for [@comment] do |f|
+                = f.text_field :text, placeholder: 'type a message'
+                = f.hidden_field :post_id, value: post.id
+                = f.submit "サブミット"
+          .post__action__details
+            .post__action__details__adress
+              - if post.pref_id?
+                = link_to do
+                  .post__action__details__adress__pref-city
+                    = post.pref.name
+              - if post.city_id?
+                = link_to do
+                  .pos__actiont__details__adress__pref-city
+                    = post.city.name

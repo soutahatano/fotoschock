@@ -1,16 +1,18 @@
 class CommentsController < ApplicationController
   def index
-    @comment = Comment.new
-    @comments = @post.comments.includes(:user)
+    @comment = Comment.find(params[:id])
+    @comments = @comment.replies.includes(:user).order("created_at DESC")
+    respond_to do |format|
+      format.json
+    end
   end
-
-  def new
-    @comment = Comment.new(post_id: params[:post_id], comment_id: params[:comment_id])
+  
+  def show
   end
 
   def create
     @comment = Comment.create(text: comment_params[:text], post_id: comment_params[:post_id], comment_id: comment_params[:comment_id], user_id: current_user.id)
-    redirect_to root_path
+    redirect_to :back
   end
 
   private

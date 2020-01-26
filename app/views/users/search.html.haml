@@ -3,7 +3,11 @@
     = link_to root_path do
       .header__title
         FotoShock
-  .user-follo
+  .search-box
+    = form_tag(search_users_path, method: :get) do |f|
+      = text_field_tag :keyword
+      = submit_tag "検索"
+  .user-inde
     - @users.each do |user|
       .user-show-head
         .user-icon-box

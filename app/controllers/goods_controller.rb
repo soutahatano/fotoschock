@@ -5,7 +5,7 @@ class GoodsController < ApplicationController
     @post.user.good
     @post.user.save
     @post.push_good(current_user)
-    redirect_to root_path
+    redirect_to :back
   end
 
   def destroy
@@ -13,7 +13,7 @@ class GoodsController < ApplicationController
     @post.user.delgood
     @post.user.save
     @post.reset_good(current_user)
-    redirect_to root_path
+    redirect_to :back
   end
 
   private

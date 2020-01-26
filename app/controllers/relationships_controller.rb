@@ -4,15 +4,15 @@ class RelationshipsController < ApplicationController
   def create
     following = current_user.follow(@user)
     if following.save
-      redirect_to root_path
+      redirect_to :back
     else
-      redirect_to root_path
+      redirect_to :back
     end
   end
 
   def destroy
     current_user.unfollow(@user)
-    redirect_to root_path
+    redirect_to :back
   end
 
   private

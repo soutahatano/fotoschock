@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def index
-    @users = User.all
+    @users = current_user.followings
   end
 
   def edit
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @room_id = message_room_id(current_user, params[:user])
     @message = Message.new
     @messages = Message.recent_in_room(@room_id)
+    @comment = Comment.new
   end
 
   def update
@@ -21,6 +22,10 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def search
+    @users = User.search(params[:keyword])
   end
 
   private

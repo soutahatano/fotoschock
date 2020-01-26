@@ -6,7 +6,9 @@ a{
   width: 100%;
   display: flex;
 }
-
+#modal{
+  display: none;
+}
 .account-page {
   display: flex;
   width: 100vw;
@@ -302,5 +304,22 @@ a.move-btn:hover {
   margin-left: 20px;
 }
 
-.user-show-dm__messages__message-right{
+.user-index{
+  background-color: #191919;
+  width: 100vw;
+  height: 100vh;
+}
+
+.search-box{
+  height: 50px;
+  line-height: 50px;
+  padding-left: 100px;
+}
+.user-inde{
+  height: calc(100vh - 150px);
+  overflow: scroll;
+}
+.user-follo{
+  height: calc(100vh - 100px);
+  overflow: scroll;
 }
