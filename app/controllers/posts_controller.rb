@@ -35,24 +35,42 @@ class PostsController < ApplicationController
       # binding.pry
       @posts = @posts.search_city(post_params[:city_id])
     end
-      @posts = @posts.page(params[:page]).per(10)
     if @posts == [] 
       @posts = Post.all
       @result = "検索結果なし"
-      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
+      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      if @rankings == [] 
+        @result += "Good獲得はありません"
+        @rankings = Post.page(params[:page]).per(10)
+      else
+        @rankings = @rankings.page(params[:page]).per(10)
+      end
     elsif @posts.where(id: Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)) == []
-      @result = "Good獲得はいません"
-      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
+      @result = "Good獲得はありません"
+      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      if @rankings == [] 
+        @rankings = Post.page(params[:page]).per(10)
+      else
+        @rankings = @rankings.page(params[:page]).per(10)
+      end
     else
       @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
     end
+    @posts = @posts.page(params[:page]).per(10)
   end
 
   def sachdemo
     @post = Post.new
     @comment = Comment.new
     @posts = Post.all.page(params[:page]).per(10)
-    @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
+    @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    if @rankings == [] 
+      @result = "Good獲得はありません"
+      @rankings = Post.page(params[:page]).per(10)
+    else
+      @rankings = @rankings.page(params[:page]).per(10)
+    end
   end
 
   private
