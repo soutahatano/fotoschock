@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @posts = Post.order("created_at DESC")
+    @posts = Post.order("created_at DESC").page(params[:page]).per(10)
     @ranking_users = User.order('good_count DESC').limit(10)
     @comment = Comment.new
     @post = Post.new
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:user).order("created_at DESC")
+    @comments = @post.comments.includes(:user).page(params[:page]).per(10).order("created_at DESC")
     @comment = Comment.new
   end
 
@@ -35,23 +35,24 @@ class PostsController < ApplicationController
       # binding.pry
       @posts = @posts.search_city(post_params[:city_id])
     end
+      @posts = @posts.page(params[:page]).per(10)
     if @posts == [] 
       @posts = Post.all
       @result = "検索結果なし"
-      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
     elsif @posts.where(id: Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)) == []
       @result = "Good獲得はいません"
-      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      @rankings = Post.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
     else
-      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+      @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
     end
   end
 
   def sachdemo
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.all
-    @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @posts = Post.all.page(params[:page]).per(10)
+    @rankings = @posts.find(Good.group(:post_id).order('count(post_id) desc').pluck(:post_id)).page(params[:page]).per(10)
   end
 
   private

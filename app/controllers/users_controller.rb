@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   def index
-    @users = current_user.followings
+    @users = current_user.followings.page(params[:page]).per(10)
   end
 
   def edit
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:keyword])
+    @users = User.search(params[:keyword]).page(params[:page]).per(10)
   end
 
   private
