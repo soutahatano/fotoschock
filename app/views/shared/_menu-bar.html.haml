@@ -27,14 +27,27 @@
             %i.far.fa-address-book
             %span
               フォロー一覧
-    %li
-      = link_to edit_user_path(current_user) do
-        %i.fas.fa-user-cog"
-        %span
-          ユーザー編集
-      %ul
-        %li
-          = link_to destroy_user_session_path, method: :delete do
-            %i.fas.fa-sign-out-alt
-            %span
-              ログアウト
+    - if user_signed_in?
+      %li
+        = link_to edit_user_path(current_user) do
+          %i.fas.fa-user-cog"
+          %span
+            ユーザー編集
+        %ul
+          %li
+            = link_to destroy_user_session_path, method: :delete do
+              %i.fas.fa-sign-out-alt
+              %span
+                ログアウト
+    - else
+      %li
+        = link_to new_user_registration_path, method: :get do
+          %i.fas.fa-user-plus
+          %span
+            新規登録
+        %ul
+          %li
+            = link_to new_user_session_path, method: :get do
+              %i.fas.fa-sign-out-alt
+              %span
+                ログイン

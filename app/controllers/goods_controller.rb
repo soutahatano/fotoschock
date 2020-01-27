@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  
+  before_action :authenticate_user!
   def create
     @post = Post.find(good_params[:post_id])
     @post.user.good

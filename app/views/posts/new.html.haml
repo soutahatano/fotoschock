@@ -37,4 +37,4 @@
           .post-field-label
             = f.label :city_id, "市区町村(任意)"
           = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
-        = f.submit '投稿', class: 'cp_button03'
+        = f.submit '投稿', class: 'button03'

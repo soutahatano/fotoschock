@@ -220,81 +220,30 @@ img {
   width: 300px;
   display: none;
 }
-.cp_button03 {
-	position: relative;
-	z-index: 1;
-	display: inline-block;
-	box-sizing: border-box;
-	width: 160px;
-	padding: 1em;
-	line-height: 1.4;
-	cursor: pointer;
-	user-select: none;
-	transition: color 0.4s, transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-	color: #52c11f;
-	border: 1px solid #52c11f;
-	border-radius: 0;
-	background: transparent;
+.button03{
+  text-decoration: none;
+  font-size: 25px;
+  color: #FFFFFF;
+  font-family: arial;
+  background: linear-gradient(to bottom, #000000, #4D4D4D);
+  border: solid #FFFFFF 1px;
+  border-radius: 7px;
+  padding:17px;
+  text-shadow: 5px 5px 1px #484848;
+  box-shadow: 3px 3px 5px #03152C;
+  -webkit-transition: all 0.33s ease;
+  -moz-transition: all 0.33s ease;
+  -o-transition: all 0.33s ease;
+  transition: all 0.33s ease;
+  width: 200px;
 }
-.cp_button03:hover {
-	color: #00eaff;
-	border: 1px solid #52c11f;
+.button03:hover{
+  color: #00FFE8;
+  background: linear-gradient(to bottom, #111111, #111111);
+  border: 1px solid #00FFDD;
+  border-radius: 5px;
+  text-shadow: 0px 0px 0px #000000;
 }
-.cp_button03:before, .cp_button03:after {
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	display: block;
-	width: 100%;
-	height: 100%;
-	content: '';
-}
-.cp_button03:before {
-	transition: transform cubic-bezier(1, 0, 0, 1) 0.4s;
-	-webkit-transform: scaleY(0);
-	        transform: scaleY(0);
-	transform-origin: top center;
-	background-color: #52c11f;
-}
-.cp_button03:after {
-	top: -6px;
-	left: -6px;
-	transition: transform cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s;
-	border: 1px solid #52c11f;
-}
-
-.cp_button03:hover:before {
-	-webkit-transform: scaleY(1);
-	        transform: scaleY(1);
-	border: 1px solid #52c11f;
-}
-.cp_button03:hover:after {
-	-webkit-transform: translate(6px, 6px);
-	        transform: translate(6px, 6px);
-	border: 1px solid #52c11f;
-}
-.cp_button03:active {
-	transition-duration: 0.05s;
-	-webkit-transform: translate(6px, 6px);
-	        transform: translate(6px, 6px);
-}
-.cp_button03:active:after {
-	transition-duration: 0.05s;
-	-webkit-transform: translate(0, 0);
-	        transform: translate(0, 0);
-}
-.cp_button03:focus {
-	color: #52c11f;
-	border: 1px solid #52c11f;
-}
-.cp_button03:focus:hover {
-	color: #00eaff;
-}
-.cp_button03:focus:before {
-	background-color: #52c11f;
-}
-
 .user-show-comment{
   padding: 20px 0 5px 20px;
   overflow: scroll;

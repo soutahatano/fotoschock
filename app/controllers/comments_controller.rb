@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @comment = Comment.find(params[:id])
     @comments = @comment.replies.includes(:user).order("created_at DESC")
