@@ -1,0 +1,41 @@
+.account-page
+  .account-page__introduct
+    = link_to root_path do
+      .account-page__introduct__title
+        FotoShock
+    .account-page__introduct__sentence
+      %p.sence
+        世界は美しい
+      %p.sence
+        だが私が見た世界はもっと美しい
+      %p.sence
+        伝えようではない私の衝動を
+      %p.sence
+        言葉ではなく一枚の画像で 
+  .account-page__info
+    .account-page__info__header
+      %h5 新規アカウントの作成
+    .account-page__info__user-form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .field
+          = devise_error_messages!
+        .field
+          .field-label
+            = f.label :name
+            %i (本名不可)
+          = f.text_field :name, autofocus: true, size: 40
+        .field
+          .field-label
+            = f.label :email
+          = f.email_field :email, size: 40
+        .field
+          .field-label
+            = f.label :password
+            %i (英数字8文字以上)
+          = f.password_field :password, autocomplete: "off", size: 40
+        .field
+          .field-label
+            = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "off", size: 40
+        .field
+          = f.submit "Create Account", class: 'create-action-btn'

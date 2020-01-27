@@ -1,0 +1,2 @@
+class PrefsController < ApplicationController
+end

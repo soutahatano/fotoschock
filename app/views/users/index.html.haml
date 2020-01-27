@@ -1,0 +1,37 @@
+.user-index
+  .header
+    = link_to root_path do
+      .header__title
+        FotoShock
+  .user-follo
+    - @users.each do |user|
+      .user-show-head
+        .user-icon-box
+          = image_tag user.image
+        = link_to user_path(user, user: user) do
+          .user-name-adres
+            .user-name
+              = user.name
+            .user-adres
+              .user-adres__pref
+                - unless user.pref == nil 
+                  = user.pref.name
+              .user-adres__city
+                - unless user.city == nil 
+                  = user.city.name
+        .user-introduct
+          = user.text
+        .user-follow
+          - unless current_user == user
+            - if current_user.following?(user.id)
+              = form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f|
+                = f.hidden_field :follow_id, value: user.id
+                = f.submit 'フォロー中', class: 'follow-btn', id: 'follow-btn-delete'
+            - else
+              = form_for(current_user.relationships.build) do |f|
+                = f.hidden_field :follow_id, value: user.id
+                = f.submit 'フォローする', class: 'follow-btn'
+        .user-goods
+          総GOOD数 
+          = user.good_count
+    = paginate(@users)

@@ -1,27 +1,54 @@
 .main-posts
-  = link_to do
-    .post
-      .post__title
-        text
-      .post__image
-        gazou
-      .post__info
-        = link_to do
-          .post__info__user
-            = render "shared/usericon"
-        .post__info__day
-          hiduke
-      .post__details
-        .post__details__tag
-          = link_to do
-            タグ
-        .post__details__adress
-          = link_to do
-            住所
-      .post__action
-        .post__action__good-btn
-          = link_to do
-            %i.far.fa-thumbs-up
-        .post__action__comment-btn
-          = link_to do
-            %i.far.fa-comment-dots
+  - @posts.each do |post|
+    = link_to post_path(post) do
+      .post
+        .post__main
+          .post__title
+            = post.text
+          .post__image
+            = image_tag post.image.url
+          .post__info
+            = link_to user_path(post.user, user: post.user) do
+              .post__info__user-box
+                .post__info__user-box__icon
+                  = image_tag post.user.image.thumb100
+                .post__info__user-box__name
+                  = post.user.name
+            .post__info__day
+              = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
+        .post__action
+          .good-number
+            - if post.user == current_user || post.good?(current_user)
+              = post.goods.length
+            - else
+              = post.goods.length
+            good!
+          .post__action__good-btn
+            - unless current_user == post.user
+              - if post.good?(current_user)
+                = form_for(post.goods.find_by(user_id: current_user.id), method: :delete) do |f|
+                  = f.submit 'Good_delete', class: 'good-btn', id: 'good-btn-delete'
+              - else
+                = form_for(post.goods.build) do |f|
+                  = f.hidden_field :post_id, value: post.id
+                  = f.submit 'Good', class: 'good-btn'
+          .post__action__comment-btn
+            %a.modal{href: "#modalp#{post.id}"}
+              .good-btn
+                Comment
+            .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
+              = form_for [@comment] do |f|
+                = f.text_field :text, placeholder: 'type a message'
+                = f.hidden_field :post_id, value: post.id
+                = f.submit "サブミット"
+          .post__action__details
+            .post__action__details__adress
+              - if post.pref_id?
+                = link_to do
+                  .post__action__details__adress__pref-city
+                    = post.pref.name
+              - if post.city_id?
+                = link_to do
+                  .pos__actiont__details__adress__pref-city
+                    = post.city.name
+  = paginate(@posts)

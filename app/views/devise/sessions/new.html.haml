@@ -1,0 +1,30 @@
+.account-page
+  .account-page__introduct
+    .account-page__introduct__title
+      FotoShock
+    .account-page__introduct__sentence
+      %p.sence
+        心が震えた
+      %p.sence
+        ひとひらの言葉に
+      %p.sence
+        心を震わせた
+      %p.sence
+        たった一つの思いで
+  .account-page__info
+    .account-page__info__header
+      %h5 登録しているユーザーでログイン
+    .account-page__info__user-form
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          .field-label
+            = f.label :email
+          = f.email_field :email, size: 40, autofocus: true
+        .field
+          .field-label
+            = f.label :password
+          = f.password_field :password, autocomplete: "off", size: 40
+        .field
+          = f.submit "Log in", class: 'create-action-btn'
+    .sinup-mov
+      = link_to "Sign up", new_registration_path(resource_name), class: 'move-btn', id: 'sign-up'

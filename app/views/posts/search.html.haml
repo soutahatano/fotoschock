@@ -1,0 +1,137 @@
+.header
+  = link_to root_path do
+    .header__title
+      FotoShock
+.wrapper
+  = render "shared/menu-bar"
+  .spost
+    
+    %ul.tabnav
+      %li
+        %a{href: "#tab01"} 新着
+      %li
+        %a{href: "#tab02"} ランキング
+      %li.result
+        = @result
+    .tabcontent
+      #tab01
+        - @posts.each do |post|
+          = link_to post_path(post) do
+            .post
+              .post__main
+                .post__title
+                  = post.text
+                .post__image
+                  = image_tag post.image.url
+                .post__info
+                  = link_to user_path(post.user, user: post.user) do
+                    .post__info__user-box
+                      .post__info__user-box__icon
+                        = image_tag post.user.image.thumb100
+                      .post__info__user-box__name
+                        = post.user.name
+                  .post__info__day
+                    = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
+              .post__action
+                .good-number
+                  - if post.user == current_user || post.good?(current_user)
+                    = post.goods.length
+                  - else
+                    = post.goods.length
+                  good!
+                .post__action__good-btn
+                  - unless current_user == post.user
+                    - if post.good?(current_user)
+                      = form_for(post.goods.find_by(user_id: current_user.id), method: :delete) do |f|
+                        = f.submit 'Good_delete', class: 'good-btn', id: 'good-btn-delete'
+                    - else
+                      = form_for(post.goods.build) do |f|
+                        = f.hidden_field :post_id, value: post.id
+                        = f.submit 'Good', class: 'good-btn'
+                .post__action__comment-btn
+                  %a.modal{href: "#modalp#{post.id}"}
+                    .good-btn
+                      Comment
+                  .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
+                    = form_for [@comment] do |f|
+                      = f.text_field :text, placeholder: 'type a message'
+                      = f.hidden_field :post_id, value: post.id
+                      = f.submit "サブミット"
+                .post__action__details
+                  .post__action__details__adress
+                    - if post.pref_id?
+                      = link_to do
+                        .post__action__details__adress__pref-city
+                          = post.pref.name
+                    - if post.city_id?
+                      = link_to do
+                        .pos__actiont__details__adress__pref-city
+                          = post.city.name
+        = paginate(@posts)
+      #tab02
+        - @rankings.each do |post|
+          = link_to post_path(post) do
+            .post
+              .post__main
+                .post__title
+                  = post.text
+                .post__image
+                  = image_tag post.image.url
+                .post__info
+                  = link_to user_path(post.user, user: post.user) do
+                    .post__info__user-box
+                      .post__info__user-box__icon
+                        = image_tag post.user.image.thumb100
+                      .post__info__user-box__name
+                        = post.user.name
+                  .post__info__day
+                    = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
+              .post__action
+                .good-number
+                  - if post.user == current_user || post.good?(current_user)
+                    = post.goods.length
+                  - else
+                    = post.goods.length
+                  good!
+                .post__action__good-btn
+                  - unless current_user == post.user
+                    - if post.good?(current_user)
+                      = form_for(post.goods.find_by(user_id: current_user.id), method: :delete) do |f|
+                        = f.submit 'Good_delete', class: 'good-btn', id: 'good-btn-delete'
+                    - else
+                      = form_for(post.goods.build) do |f|
+                        = f.hidden_field :post_id, value: post.id
+                        = f.submit 'Good', class: 'good-btn'
+                .post__action__comment-btn
+                  %a.modal{href: "#modalp#{post.id}"}
+                    .good-btn
+                      Comment
+                  .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
+                    = form_for [@comment] do |f|
+                      = f.text_field :text, placeholder: 'type a message'
+                      = f.hidden_field :post_id, value: post.id
+                      = f.submit "サブミット"
+                .post__action__details
+                  .post__action__details__adress
+                    - if post.pref_id?
+                      = link_to do
+                        .post__action__details__adress__pref-city
+                          = post.pref.name
+                    - if post.city_id?
+                      = link_to do
+                        .pos__actiont__details__adress__pref-city
+                          = post.city.name
+        = paginate(@rankings)
+  .search-right
+    = form_for(@post, url: search_posts_path, method: :get) do |f|
+      .search-right-label
+        = f.label :text, "タイトル"
+      = f.text_field :text
+      .search-right-label
+        = f.label :perf_id, "都道府県"
+      = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
+      .search-right-label
+        = f.label :city_id, "市区町村"
+      = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
+      .search-right-label
+        = f.submit "検索"

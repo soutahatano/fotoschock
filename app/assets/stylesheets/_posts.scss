@@ -18,15 +18,31 @@ img {
   width: 100vw;
   height: 100px;
   text-align: center;
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
-
+  display: flex;
+  justify-content: space-around;
+  background-color: #0f0e0e;
   &__title{
     font-size: 30px;
-    color: #FFFFFF;
+    color: #fafafa;
     text-align: center;
     height: 100%;
     line-height: 100px;
+    width: 90vw;
+    text-shadow: 0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 30px #fff,
+    0 0 40px #00eaff,
+    0 0 70px #00eaff,
+    0 0 80px #00efff,
+    0 0 100px #00efff,
+    0 0 150px #00efff,
+    0 0 200px #00ffff,
+  }
+  &__login{
+    margin-top: 40px;
+    border: double darkgray;
+    color: darkgray;
+    font-size: 20px;
   }
 }
 
@@ -34,85 +50,92 @@ img {
   height: calc(100vh - 100px);
   width: 100vw;
   display: flex;
+  background-color: #101010;
 }
 
-.menu-bar{
-  width: 350px;
-  height: 100%;
-  background-color: red;
-  padding: 70px 30px 0;
-  &__list{
-    &__content{
-      height: 35px;
-      line-height: 35px;
-      margin-bottom: 5px;
-      background-color: #FFFFFF;
-    }
-  }
-}
 .main-posts{
-  width: 100vw;
+  // width: 100vw;
+  width: 750px;
   padding: 20px 20px 0;
-  // background-color: #141c18;
-  background-color: #FFFFFF;
-  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
-  .post{
-    background:url(https://peonyqueen.files.wordpress.com/2015/10/cork02.jpg);
-    &__title{
-      // background-color: beige;
+  overflow: scroll;
+}
+.post{
+  background-color: rgb(14, 14, 14);
+  width:710px;
+  margin-bottom: 20px;
+  display: flex;
+  &__main{
+    width: 550px;
+    .post__title{
+      height: 30px;
+      font-size: 23px;
+      color: #dddddd;
+      line-height: 30px;
+      text-align: center;
     }
-    &__image{
-      width: 100%;
+    .post_image{
+      border: solid rgb(7, 7, 7);
+      background-color: rgb(7, 7, 7);
+      width: 5500px;
       height: auto;
-      background-color: blue;
+      text-align: center;
     }
-    &__info{
+    .post__info{
       display: flex;
-      justify-content: space-between;
-      &__user{
-        background-color: cadetblue;
+      margin: 3px 20px;
+      &__user-box{
         width: 100%;
+        display: flex;
+        &__icon{
+          height: 50px;
+          width: 50px;
+        }
+        &__name{
+          line-height: 50px;
+          margin: 0 30px;
+          font-size: 20px;
+          color: #dddddd;
+        }
       }
       &__day{
-        background-color: coral;
+        color: #dddddd;
+        line-height: 50px;
       }
+    }
+  }
+  &__action{
+    width: 160px;
+    padding: 20px 10px 0;
+    color: #dddddd;
+    .good-number{
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 20px;
     }
     &__details{
-      &__tag{
-        background-color: cornsilk;
-      }
+      text-align: center;
+      //   &__tag{
+        // }
       &__adress{
-        background-color: cyan;
-      }
-    }
-    &__action{
-      display: flex;
-      justify-content: space-between;
-      &__good-btn{
-        background-color: darkblue;
-        width: 50%;
-      }
-      &__comment{
-        background-color: darkcyan;
-        width: 50%;
+        &__pref-city{
+          color: #dddddd;
+          padding-bottom: 10px;
+        }
       }
     }
   }
 }
 
-.right-bar{
-  width: 700px;
-  background-color: rebeccapurple;
+.right_bar{
+  padding: 20px 20px 0;
+  overflow: scroll;
 }
 .ranking{
-  padding: 20px 20px 0;
-  &__topic{
-    .ranker{
-      &__rank{
-
-      }
-    }
-  }
+  padding: 30px;
+  color: #dddddd;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 3px#555555;
 }
 
 .user-box{
@@ -123,4 +146,246 @@ img {
   &__name{
 
   }
+}
+
+.right-new{
+  width: 50%;
+}
+
+.good-btn {
+	display: block;
+  text-align: center;
+  margin: 0 auto 10px;
+	text-decoration: none;
+  color: #00ffff;
+  font-size: 10px;
+	width: 90px;
+	height: 60px;
+	line-height: 60px;
+	border: double 4px #00ffff;
+	border-radius: 50%;
+	vertical-align: middle;
+	overflow: hidden;
+  transition: .6s;
+  background-color: rgb(7, 7, 7);
+  cursor: pointer;
+}
+#good-btn-delete{
+  color: #ff8800;
+  border: double 4px #ff8800;
+}
+.good-btn:hover {
+	transform: rotateY(360deg);
+}
+.sinup-mov{
+  margin: 130px 0;
+}
+#sign-up{
+  margin: 0 auto;
+}
+
+.new_post{
+  width: 100%;
+}
+
+.post-form{
+  text-align: center;
+  padding-top: 80px;
+  color: #fafafa;
+}
+.post-field{
+  margin-bottom: 20px;
+  &-label{
+    font-size: 24px;
+    color: #dddddd;
+  }
+  &-image{
+    height: 300px;
+    width: 300px;
+    margin: 0 auto 10px;
+    position: relative;
+  }
+}
+
+.image-box{
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  color: rgba(255,0,0,0);
+  left: 0;
+}
+
+#post_image{
+  height: 300px;
+  width: 300px;
+  display: none;
+}
+.button03{
+  text-decoration: none;
+  font-size: 25px;
+  color: #FFFFFF;
+  font-family: arial;
+  background: linear-gradient(to bottom, #000000, #4D4D4D);
+  border: solid #FFFFFF 1px;
+  border-radius: 7px;
+  padding:17px;
+  text-shadow: 5px 5px 1px #484848;
+  box-shadow: 3px 3px 5px #03152C;
+  -webkit-transition: all 0.33s ease;
+  -moz-transition: all 0.33s ease;
+  -o-transition: all 0.33s ease;
+  transition: all 0.33s ease;
+  width: 200px;
+}
+.button03:hover{
+  color: #00FFE8;
+  background: linear-gradient(to bottom, #111111, #111111);
+  border: 1px solid #00FFDD;
+  border-radius: 5px;
+  text-shadow: 0px 0px 0px #000000;
+}
+.user-show-comment{
+  padding: 20px 0 5px 20px;
+  overflow: scroll;
+  width: calc(100vw - 760px);
+}
+.comment__content{
+  border-right: solid 1px #dddddd;
+  margin-bottom: 4px;
+  width: 96%;
+  &__box{
+    display: flex;
+    justify-content: space-between;
+    .comment__user__box{
+      display: flex;
+      height: 32px;
+      padding: 1px 5px;
+    }
+    .comment__inf{
+      display: flex;
+    }
+  }
+  .coment__text{
+    color: #dddddd;
+    word-break: break-all;
+    border-bottom: solid 1px #dddddd;
+    padding-left: 3px;
+  }
+}
+.coment__inf__day{
+  color: #dddddd;
+  margin-right: 5px;
+}
+.coment__user__box__icon{
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+}
+
+.post__show__user-box{
+  height: 50px;
+  display: flex;
+  padding-left: 5px;
+  &__icon{
+    height: 50px;
+    width: 50px;
+    margin-right: 5px;
+  }
+  &__name{
+    line-height: 50px;
+    font-size: 18px;
+    color: #dddddd;
+  }
+}
+.post__main__info__day{
+  color: #dddddd;
+}
+
+.fa-chevron-down{
+  color: #dddddd;
+  cursor: pointer;
+}
+.fa-chevron-up{
+  color: #dddddd;
+  cursor: pointer;
+}
+
+.account-page__introduct__sentence{
+  font-family: 'Sawarabi Mincho', sans-serif;
+  text-align: center;
+  color: #00eaff;
+}
+.sence{
+  padding-top: 90px;
+  font-size: 25px;
+  text-shadow: 0 0 10px #fff,
+  0 0 20px #fff,
+  0 0 30px #fff,
+  0 0 40px #00eaff,
+  0 0 70px #00eaff,
+  0 0 80px #00efff,
+  0 0 100px #00efff,
+  0 0 150px #00efff,
+  0 0 200px #00ffff,
+}
+.sence-post{
+  padding-top: 60px;
+}
+.sence-posta{
+  color: #dddddd;
+  font-size: 30px;
+  text-shadow: 0 0 10px #00eaff,
+  0 0 20px #00eaff,
+  0 0 30px #00bbff,
+  0 0 40px #00bbff,
+  0 0 70px #00aaff,
+  0 0 80px #00aaff,
+  0 0 100px #0088ff,
+  0 0 150px #0088ff,
+  0 0 200px #0044ff,
+  0 0 300px #0022ff,
+}
+
+.spost{
+  padding: 0 20px;
+}
+
+.tabnav{
+  padding-left: 20px;
+  li{
+    display: inline;
+    a{
+      display: inline-block;
+      background: #eeeeee;
+      color: #333333;
+      padding: 10px;
+      border-radius: 12px;
+      text-decoration: none;
+    }
+  }
+}
+.tabnav li a:hover,
+.tabnav li a.active{
+  background: #0044dd;
+  color: #101010;
+}
+.tabcontent{
+  padding: 20px;
+  overflow: scroll;
+  height: calc(100vh - 144px);
+}
+
+.search-right{
+  width: 100%;
+  text-align: center;
+  padding-top: 70px;
+}
+.search-right-label{
+  color: #dddddd;
+  margin-top: 30px;
+}
+
+.result{
+  color: #dd8822;
+  margin-left: 20px;
 }

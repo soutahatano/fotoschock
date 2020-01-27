@@ -1,0 +1,325 @@
+a{
+  color: #dddddd;
+}
+
+.edit_user{
+  width: 100%;
+  display: flex;
+}
+#modal{
+  display: none;
+}
+.account-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0e0e;
+  &-edit{
+    height: 90vh;
+    width: 100vw;
+  }
+  &__introduct{
+    width: 50%;
+    border-right: double white;
+    &__title{
+      color: #fafafa;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 70px;
+      text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #fff,
+      0 0 40px #00eaff,
+      0 0 70px #00eaff,
+      0 0 80px #00efff,
+      0 0 100px #00efff,
+      0 0 150px #00efff,
+      0 0 200px #00ffff,
+    }
+    &__sentence{
+    }
+  }
+  &__info{
+    width: 50%;
+    color: #eeeeee;
+    &-edit{
+      margin-top: 100px;;
+    }
+    &__header{
+      text-align: center;
+      margin: 80px 0 50px;
+      font-size: 24px;
+    }
+    &__user-form{
+      .field{
+        text-align: center;
+        margin-bottom: 40px;
+        &-label{
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+.create-action-btn{
+  display       : inline-block;
+  border-radius : 11%;
+  font-size     : 20pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 12px 27px;
+  background    : rgba(26, 26, 255, 0.92);
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  border        : 2px solid rgba(26, 26, 255, 0.92);
+}
+.create-action-btn:hover {
+  color         : rgba(26, 26, 255, 0.92);
+  background    : #ffffff;
+}
+
+
+.link{
+  align-items: center;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  background-color: #090909;
+}
+
+a.move-btn {
+  line-height: 20px;
+	display: block;
+  position: relative;
+  height: 40px;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+	color: #090909;
+	border:1px solid aqua;
+	background: aqua;
+	overflow: hidden;
+	z-index: 1 !important;
+}
+a.move-btn:after {
+	content:"";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 0;
+	width: 100%;
+	background : #090909;
+	opacity: 0;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transition: 0.3s;
+	z-index: -1;
+}
+a.move-btn:hover {
+	color: aqua;
+}
+.move-btn:hover:after {
+	height: 250%;
+	opacity: 1;
+}
+.move-btn:active:after {
+	height: 350%;
+	opacity: 1;
+}
+
+.icon_box{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  color: rgba(255,0,0,0);
+}
+
+#user_image{
+  height: 100px;
+  width: 100px;
+  display: none;
+}
+
+.files-edit{
+  height: 100px;
+  width: 100px;
+  margin: 0 auto 10px;
+  position: relative;
+}
+
+.user-show-head{
+  height: 100px;
+  width: 100vw;
+  display: flex;
+  background-color: #171717;
+  color: whitesmoke;
+  border-bottom: solid #00eaff 1px;
+  .user-icon-box{
+    height: 100px;
+    width: 100px;
+    margin-left: 2px;
+    margin-right: 20px;
+  }
+  .user-name-adres{
+    line-height: 50px;
+    .user-name{
+      height: 50px;
+      font-size: 25px;
+    }
+    .user-adres{
+      display: flex;
+      height: 50px;
+      &__pref{
+        margin-right: 5px;
+      }
+      &__city{
+        margin-right: 15px;
+      }
+    }
+  }
+  .user-introduct{
+    margin: 5px;
+    width: 400px;
+    font-size: 12px;
+    word-break: break-all;
+  }
+  .user-follow{
+    height: 100px;
+    width: 180px;
+    margin-left: 20px;
+    line-height: 100px;
+  }
+}
+.user-show-body{
+  height: calc(100vh - 100px);
+  display: flex;
+  background-color: #191919;
+  .user-show-posts{
+    border-right: solid #00ffff 1px;
+    width: 680px;
+    padding: 10px 10px 0;
+    overflow: scroll;
+    .post{
+      display: flex;
+      margin-bottom: 20px;
+      background-color: rgb(14, 14, 14);
+      &__main{
+        width: 500px;
+        &__title{
+          height: 30px;
+          font-size: 25px;
+          line-height: 30px;
+          text-align: center;
+        }
+        &__image{
+          width: 500px;
+          height: auto;
+        }
+      }
+      &__action{
+        width: 100%;
+        text-align: center;
+        padding: 30px 30px;
+        color: #dddddd;
+        font-size: 20px;
+        &__good-btn{
+          margin: 30px 0;
+        }
+      }
+    }
+    
+  }
+  .user-show-dm{
+    width: calc(100vw - 760px);
+    &__messages{
+      padding: 0 15px;
+      height: calc(100vh - 150px);
+      overflow: scroll;
+      &__right{
+        text-align: right;
+        margin: 5px 0;
+      }
+      &__left{
+        text-align: left;
+        margin: 5px 0;
+      }
+      &__message{
+        padding:3px 5px;
+        word-break: break-all;
+        // border: 1px solid #020202;
+        border: 1px solid #00dfdf;
+        color:#D0D0D0;
+        font-size: 13px;
+        margin-top: 5px;
+        display: inline-block;
+        border-radius: 10px;
+      }
+
+    }
+    &__form{
+      height: 50px;
+      border-top: solid #00ffff 1px;
+      line-height: 50px;
+      &__box{
+        text-align: center;
+      }
+    }
+  }
+}
+.follow-btn {
+	display: inline-block;
+	width: 160px;
+	padding: 1em;
+	line-height: 1.4;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color 0.2s, color 0.2s, width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-radius 0.2s;
+	color: #00eaff;
+	border: 1px solid #00eaff;
+	border-radius: 0.2em;
+	background: transparent;
+}
+.follow-btn:hover {
+	width: 180px;
+	color: #ffffff;
+	border-radius: 0.5em;
+	border: 1px solid #00eaff;
+	background-color: #00eaff;
+}
+
+#follow-btn-delete{
+  color: #ff8800;
+  border: 1px solid #ff8800;
+}
+#follow-btn-delete:hover{
+  border: 1px solid #ff8800;
+  background-color: #ff8800;
+  color: #ffffff;
+}
+
+.user-goods{
+  line-height: 100px;
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.user-index{
+  background-color: #191919;
+  width: 100vw;
+  height: 100vh;
+}
+
+.search-box{
+  height: 50px;
+  line-height: 50px;
+  padding-left: 100px;
+}
+.user-inde{
+  height: calc(100vh - 150px);
+  overflow: scroll;
+}
+.user-follo{
+  height: calc(100vh - 100px);
+  overflow: scroll;
+}
