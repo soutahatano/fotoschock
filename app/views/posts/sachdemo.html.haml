@@ -67,7 +67,6 @@
                       = link_to do
                         .pos__actiont__details__adress__pref-city
                           = post.city.name
-        = paginate(@posts)
       #tab02
         - @rankings.each do |post|
           = link_to post_path(post) do
@@ -121,7 +120,6 @@
                       = link_to do
                         .pos__actiont__details__adress__pref-city
                           = post.city.name
-        = paginate(@rankings)
   .search-right
     = form_for(@post, url: search_posts_path, method: :get) do |f|
       .search-right-label
