@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: fotoschock_production
-  username: fotoschock
+  username: root
   password: <%= ENV['FOTOSCHOCK_DATABASE_PASSWORD'] %>
