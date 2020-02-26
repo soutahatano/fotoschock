@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: fotoschock_production
-  username: fotoschock
-  password: <%= ENV['FOTOSCHOCK_DATABASE_PASSWORD'] %>
+  database: heroku_3831765bf498b6e
+  username: b316fe27c79b66
+  password: <%= ENV['DATABASE_PASSWORD'] %>
