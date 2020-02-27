@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20200110105023) do
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_posts_on_city_id", using: :btree
     t.index ["pref_id"], name: "index_posts_on_pref_id", using: :btree
+    t.index ["text"], name: "index_posts_on_text", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
