@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
   
-  belongs_to :pref, optional: true
+  belongs_to_active_hash :prefecture, optional: true
   belongs_to :city, optional: true
   has_many :goods, dependent: :destroy
   has_many :comments, dependent: :destroy

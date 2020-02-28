@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :pref, optional: true
+  belongs_to_active_hash :prefecture, optional: true
   belongs_to :city, optional: true
   has_many :goods, dependent: :destroy
   has_many :comments, dependent: :destroy

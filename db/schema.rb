@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 20200110105023) do
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "pref_id"
-    t.string   "name",       limit: 16
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "prefecture_id",            null: false
+    t.string   "name",          limit: 16
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,23 +60,16 @@ ActiveRecord::Schema.define(version: 20200110105023) do
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "text",       null: false
-    t.string   "image",      null: false
+    t.string   "text",          null: false
+    t.string   "image",         null: false
+    t.integer  "prefecture_id", null: false
     t.integer  "user_id"
-    t.integer  "pref_id"
     t.integer  "city_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["city_id"], name: "index_posts_on_city_id", using: :btree
-    t.index ["pref_id"], name: "index_posts_on_pref_id", using: :btree
     t.index ["text"], name: "index_posts_on_text", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
-  end
-
-  create_table "prefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -102,7 +95,7 @@ ActiveRecord::Schema.define(version: 20200110105023) do
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
     t.integer  "good_count",                           default: 0,  null: false
-    t.integer  "pref_id"
+    t.integer  "prefecture_id",                                     null: false
     t.integer  "city_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -112,7 +105,6 @@ ActiveRecord::Schema.define(version: 20200110105023) do
     t.index ["city_id"], name: "index_users_on_city_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["name"], name: "index_users_on_name", using: :btree
-    t.index ["pref_id"], name: "index_users_on_pref_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
@@ -124,10 +116,8 @@ ActiveRecord::Schema.define(version: 20200110105023) do
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "cities"
-  add_foreign_key "posts", "prefs"
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "users", "cities"
-  add_foreign_key "users", "prefs"
 end
