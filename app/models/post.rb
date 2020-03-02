@@ -33,8 +33,8 @@ class Post < ApplicationRecord
     self.where('text LIKE(?)', "%#{search}%")
   end
 
-  def self.search_pref(search)
-    self.where(pref_id: search)
+  def self.search_prefecture(search)
+    self.where(prefecture_id: search)
   end
 
   def self.search_city(search)
