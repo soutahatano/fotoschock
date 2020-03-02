@@ -5,7 +5,6 @@
 .wrapper
   = render "shared/menu-bar"
   .spost
-    
     %ul.tabnav
       %li
         %a{href: "#tab01"} 新着
@@ -59,10 +58,10 @@
                       = f.submit "サブミット"
                 .post__action__details
                   .post__action__details__adress
-                    - if post.pref_id?
+                    - if post.prefecture_id?
                       = link_to do
                         .post__action__details__adress__pref-city
-                          = post.pref.name
+                          = post.prefecture.name
                     - if post.city_id?
                       = link_to do
                         .pos__actiont__details__adress__pref-city
@@ -112,10 +111,10 @@
                       = f.submit "サブミット"
                 .post__action__details
                   .post__action__details__adress
-                    - if post.pref_id?
+                    - if post.prefecture_id?
                       = link_to do
                         .post__action__details__adress__pref-city
-                          = post.pref.name
+                          = post.prefecture.name
                     - if post.city_id?
                       = link_to do
                         .pos__actiont__details__adress__pref-city
@@ -126,8 +125,8 @@
         = f.label :text, "タイトル"
       = f.text_field :text
       .search-right-label
-        = f.label :perf_id, "都道府県"
-      = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
+        = f.label :perfecture_id, "都道府県"
+      = f.select :prefecture_id, Prefecture.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
       .search-right-label
         = f.label :city_id, "市区町村"
       = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true

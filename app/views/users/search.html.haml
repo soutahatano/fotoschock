@@ -18,8 +18,8 @@
               = user.name
             .user-adres
               .user-adres__pref
-                - unless user.pref == nil 
-                  = user.pref.name
+                - unless user.prefecture_id == nil 
+                  = user.prefecture_id.name
               .user-adres__city
                 - unless user.city == nil 
                   = user.city.name

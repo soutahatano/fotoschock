@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
-  belongs_to :user
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture, optional: true
-  belongs_to :city, optional: true
+  belongs_to_active_hash :city, optional: true
+  belongs_to :user
   has_many :goods, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :post_tags

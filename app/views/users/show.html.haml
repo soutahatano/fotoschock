@@ -6,8 +6,8 @@
       = @user.name
     .user-adres
       .user-adres__pref
-        - unless @user.pref == nil 
-          = @user.pref.name
+        - unless @user.prefecture_id == nil 
+          = @user.prefecture_id.name
       .user-adres__city
         - unless @user.city == nil 
           = @user.city.name
@@ -42,10 +42,10 @@
                 = post.created_at.strftime("%Y年%m月%d日 %H時%M分")
             .post__main__details
               .post__main__details__adress
-                - if post.pref_id?
+                - if post.prefecture_id?
                   = link_to do
                     .post__main__details__adress__pref-city
-                      = post.pref.name
+                      = post.prefecture.name
                 - if post.city_id?
                   = link_to do
                     .post__main__details__adress__pref-city

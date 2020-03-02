@@ -31,8 +31,8 @@
           = f.file_field :image, id: 'post_image'
         .post-field
           .post-field-label
-            = f.label :pref_id, "都道府県(任意)"
-          = f.select :pref_id, Pref.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
+            = f.label :prefecture_id, "都道府県(任意)"
+          = f.select :prefecture_id, Prefecture.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
         .post-field
           .post-field-label
             = f.label :city_id, "市区町村(任意)"

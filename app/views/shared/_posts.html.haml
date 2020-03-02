@@ -43,10 +43,10 @@
                 = f.submit "サブミット"
           .post__action__details
             .post__action__details__adress
-              - if post.pref_id?
+              - if post.prefecture_id?
                 = link_to do
                   .post__action__details__adress__pref-city
-                    = post.pref.name
+                    = post.prefecture.name
               - if post.city_id?
                 = link_to do
                   .pos__actiont__details__adress__pref-city
