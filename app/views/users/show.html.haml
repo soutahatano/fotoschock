@@ -55,20 +55,17 @@
             -#     タグ
           .post__action
             .good-number
-              -# - if post.user == current_user || post.good?(current_user)
-              -#   = post.goods.length
-              -# - else
-              = post.goods.length
-              good!
+                %div{id: "good-post#{post.id}"}
+                  = post.goods.length
+                good!
             .post__action__good-btn
               - unless current_user == post.user
                 - if post.good?(current_user)
-                  = form_for(post.goods.find_by(user_id: current_user.id), method: :delete) do |f|
-                    = f.submit 'Good_delete', class: 'good-btn', id: 'good-btn-delete'
+                  .good-btn#good-btn-delete{data: {ids: {post: post.id, user: current_user.id}}}
+                    Good_delete
                 - else
-                  = form_for(post.goods.build) do |f|
-                    = f.hidden_field :post_id, value: post.id
-                    = f.submit 'Good', class: 'good-btn'
+                  .good-btn{data: {ids: {post: post.id, user: current_user.id}}}
+                    Good
             .post__action__comment-btn
               %a.modal{href: "#modalp#{post.id}"}
                 .good-btn

@@ -1,24 +1,17 @@
 class GoodsController < ApplicationController
+  protect_from_forgery except: [:create]
   before_action :authenticate_user!
+
   def create
-    @post = Post.find(good_params[:post_id])
-    @post.user.good
-    @post.user.save
-    @post.push_good(current_user)
-    redirect_to :back
+    @good = Good.new(user_id: current_user.id, post_id: params[:post_id])
+    @good.save
+    current_user.good
   end
 
   def destroy
-    @post = Good.find(params[:id]).post
-    @post.user.delgood
-    @post.user.save
-    @post.reset_good(current_user)
-    redirect_to :back
+    @good = Good.find_by(user_id: params[:user_id], post_id: params[:post_id])
+    @good.destroy
+    current_user.delgood
   end
 
-  private
-
-  def good_params
-    params.require(:good).permit(:post_id)
-  end
 end

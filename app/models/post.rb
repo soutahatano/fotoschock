@@ -20,14 +20,6 @@ class Post < ApplicationRecord
     good_users.include?(user)
   end
 
-  def push_good(user)
-    goods.create(user_id: user.id)
-  end
-
-  def reset_good(user)
-    goods.find_by(user_id: user.id).destroy
-  end
-
   def self.search_title(search)
     return Post.all unless search
     self.where('text LIKE(?)', "%#{search}%")

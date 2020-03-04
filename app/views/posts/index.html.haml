@@ -16,4 +16,4 @@
                 .rank-box__icon
                   = image_tag user.image
                 .rank-box__name
-                  = user.name
+                  = user.name.truncate(7, separator: '.')

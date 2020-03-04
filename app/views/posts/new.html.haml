@@ -21,8 +21,8 @@
       .post-form
         .post-field
           .post-field-label
-            = f.label :text, "Title 6文字以下"
-          = f.text_field :text, size: 12
+            = f.label :text, "タイトル 6文字以下"
+          = f.text_field :text, maxlength: 6
         .post-field
           .post-field-image
             .image-box#image-box

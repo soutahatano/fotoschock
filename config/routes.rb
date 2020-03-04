@@ -11,8 +11,9 @@ Rails.application.routes.draw do
       get 'search', 'sachdemo'
     end
   end
+  resources :cities, only: [:index], defaults: {format: 'json' }
   resources :comments, only: [:index, :show, :create]
   resources :messages, only: [:create]
   resources :relationships, only: [:create, :destroy]
-  resources :goods, only: [:create, :destroy]
+  resources :goods, only: [:create, :destroy], defaults: {format: 'json' }
 end

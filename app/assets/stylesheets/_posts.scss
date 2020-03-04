@@ -114,8 +114,6 @@ img {
     }
     &__details{
       text-align: center;
-      //   &__tag{
-        // }
       &__adress{
         &__pref-city{
           color: #dddddd;
@@ -126,12 +124,15 @@ img {
   }
 }
 
-.right_bar{
+.right-bar{
   padding: 20px 20px 0;
   overflow: scroll;
+  margin: 0 auto;
+  min-width: 300px;
 }
 .ranking{
   padding: 30px;
+  margin: 0 auto;
   color: #dddddd;
   font-size: 20px;
   text-align: center;
@@ -158,13 +159,12 @@ img {
   margin: 0 auto 10px;
 	text-decoration: none;
   color: #00ffff;
-  font-size: 10px;
+  font-size: 13px;
 	width: 90px;
 	height: 60px;
-	line-height: 60px;
+	line-height: 56px;
 	border: double 4px #00ffff;
 	border-radius: 50%;
-	vertical-align: middle;
 	overflow: hidden;
   transition: .6s;
   background-color: rgb(7, 7, 7);
@@ -173,9 +173,6 @@ img {
 #good-btn-delete{
   color: #ff8800;
   border: double 4px #ff8800;
-}
-.good-btn:hover {
-	transform: rotateY(360deg);
 }
 .sinup-mov{
   margin: 130px 0;
@@ -388,4 +385,27 @@ img {
 .result{
   color: #dd8822;
   margin-left: 20px;
+}
+
+#post_text{
+  margin-top: 5px;
+  height: 35px;
+  width: 200px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#post_prefecture_id{
+  margin-top: 5px;
+  height: 25px;
+  width: 200px;
+  text-align: center;
+}
+
+#post_city_id{
+  margin-top: 5px;
+  height: 25px;
+  width: 200px;
+  text-align: center;
 }

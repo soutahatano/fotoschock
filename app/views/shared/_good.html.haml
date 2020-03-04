@@ -1,7 +1,6 @@
 - unless current_user.id == post.user.id
   - if post.good?(current_user)
-    = form_for(post.goods.find_by(user_id: current_user.id), method: :delete, remote: true) do |f|
-      = f.button 'Good_delete'
+    .good-button 'Good_Delete'
   - else
     = form_for(post.goods.build, remote: true) do |f|
       = f.hidden_field :post_id, post.id
