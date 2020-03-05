@@ -11,7 +11,7 @@
             = link_to user_path(post.user, user: post.user) do
               .post__info__user-box
                 .post__info__user-box__icon
-                  = image_tag post.user.image.thumb100
+                  = image_tag post.user.image.thumb100, class: "post-image-icon"
                 .post__info__user-box__name
                   = post.user.name
             .post__info__day
@@ -22,22 +22,23 @@
               = post.goods.length
             good!
           .post__action__good-btn
-            - unless current_user == post.user
-              - if post.good?(current_user)
-                .good-btn#good-btn-delete{data: {ids: {post: post.id, user: current_user.id}}}
-                  Good_delete
-              - else
-                .good-btn{data: {ids: {post: post.id, user: current_user.id}}}
-                  Good
+            - if user_signed_in?
+              - unless current_user == post.user
+                - if post.good?(current_user)
+                  .good-btn#good-btn-delete{data: {ids: {post: post.id, user: current_user.id}}}
+                    Good_delete
+                - else
+                  .good-btn{data: {ids: {post: post.id, user: current_user.id}}}
+                    Good
           .post__action__comment-btn
             %a.modal{href: "#modalp#{post.id}"}
               .good-btn
                 Comment
             .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
               = form_for [@comment] do |f|
-                = f.text_field :text, placeholder: 'type a message'
+                = f.text_field :text, placeholder: 'コメントを入力'
                 = f.hidden_field :post_id, value: post.id
-                = f.submit "サブミット"
+                = f.submit "送信"
           .post__action__details
             .post__action__details__adress
               - if post.prefecture_id?

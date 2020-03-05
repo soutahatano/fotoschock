@@ -7,7 +7,7 @@
     - @users.each do |user|
       .user-show-head
         .user-icon-box
-          = image_tag user.image
+          = image_tag user.image, class: "image-icon"
         = link_to user_path(user, user: user) do
           .user-name-adres
             .user-name
@@ -34,4 +34,4 @@
         .user-goods
           総GOOD数 
           = user.good_count
-    = paginate(@users)
+    = paginate(@users)  

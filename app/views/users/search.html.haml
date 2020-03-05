@@ -11,7 +11,7 @@
     - @users.each do |user|
       .user-show-head
         .user-icon-box
-          = image_tag user.image
+          = image_tag user.image, class: "image-icon"
         = link_to user_path(user, user: user) do
           .user-name-adres
             .user-name
@@ -19,7 +19,7 @@
             .user-adres
               .user-adres__pref
                 - unless user.prefecture_id == nil 
-                  = user.prefecture_id.name
+                  = user.prefecture.name
               .user-adres__city
                 - unless user.city == nil 
                   = user.city.name

@@ -3,7 +3,6 @@ $(function(){
     var post = $(this).data("ids-post");
     var user = $(this).data("ids-user");
     let count = $(`#good-post${post}`).text().slice();
-    console.log(count);
     if($(this).parent().children("#good-btn-delete").length > 0){
       $.ajax({
         type: 'DELETE',
@@ -19,7 +18,6 @@ $(function(){
         $(`#good-post${post}`).parent().parent().children(".post__action__good-btn").children().append("Good");
         })
         .fail(function(){
-          console.log('失敗');
         });
       }else{
         $.ajax({
@@ -36,7 +34,6 @@ $(function(){
           $(`#good-post${post}`).parent().parent().children(".post__action__good-btn").children("#good-btn-delete").append("Good-Delete");
         })
         .fail(function(){
-          console.log('失敗');
         });
     }
   });

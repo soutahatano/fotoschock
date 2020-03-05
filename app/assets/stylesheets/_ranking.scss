@@ -4,10 +4,11 @@
   &__icon{
     height: 40px;
     width: 40px;
-		margin-right: 15px;
+		line-height: 55px;
 	}
 	&__name{
 		line-height: 45px;
+		margin-left: 15px;
 	}
 }
 ol.cp_clist {
@@ -38,7 +39,7 @@ ol.cp_clist ol{
 	top: 50%;
 	left: -15px;
 	padding: 0 0.2em 0 0.2em;
-	margin-top: -15px;
+	margin-top: -17.5px;
 	height: 28px;
 	width: 28px;
 	font-weight: bold;
