@@ -1,13 +1,13 @@
 .user-show-head
   .user-icon-box
-    = image_tag @user.image
+    = image_tag @user.image, class: "image-icon"
   .user-name-adres
     .user-name
       = @user.name
     .user-adres
       .user-adres__pref
         - unless @user.prefecture_id == nil 
-          = @user.prefecture_id.name
+          = @user.prefecture.name
       .user-adres__city
         - unless @user.city == nil 
           = @user.city.name

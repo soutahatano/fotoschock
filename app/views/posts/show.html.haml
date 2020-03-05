@@ -15,22 +15,12 @@
           = link_to user_path(@post.user, user: @post.user) do
             .post__show__user-box
               .post__show__user-box__icon
-                = image_tag @post.user.image.thumb100
+                = image_tag @post.user.image.thumb100, class: "post-image-icon"
               .post__show__user-box__name
                 = @post.user.name
-          .post__main__info
-            .post__main__info__day
-              = @post.created_at.strftime("%Y年%m月%d日 %H時%M分")
-          .post__main__details
-            .post__main__details__adress
-              - if @post.prefecture_id?
-                = link_to do
-                  .post__main__details__adress__pref-city
-                    = @post.prefecture.name
-              - if @post.city_id?
-                = link_to do
-                  .post__main__details__adress__pref-city
-                    = @post.city.name
+            .post__main__info
+              .post__main__info__day
+                = @post.created_at.strftime("%Y年%m月%d日 %H時%M分")
         .post__action
           .good-number
             %div{id: "good-post#{@post.id}"}
@@ -60,7 +50,7 @@
           = link_to user_path(comment.user, user: comment.user) do
             .comment__user__box
               .coment__user__box__icon
-                = image_tag comment.user.image.thumb50
+                = image_tag comment.user.image, class: "post-image-icon"
               .coment__user__box__name
                 = comment.user.name
           .comment__inf

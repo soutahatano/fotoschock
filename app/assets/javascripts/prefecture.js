@@ -14,7 +14,6 @@ $(function(){
       dataType: "json"
     })
     .done(function(cities){
-      console.log(cities);
       $("#post_city_id").empty();
       var insertHTML = '';
       cities.forEach(function(city){
@@ -42,7 +41,6 @@ $(function(){
       dataType: "json"
     })
     .done(function(cities){
-      console.log(cities);
       $("#user_city_id").empty();
       var insertHTML = '';
       cities.forEach(function(city){

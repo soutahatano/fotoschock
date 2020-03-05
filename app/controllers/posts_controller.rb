@@ -27,12 +27,10 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @posts = Post.search_title(post_params[:text])
     @result = ""
-    if post_params[:prefcture_id] != ""  && @posts != []
-      # binding.pry
-      @posts = @posts.search_prefcture(post_params[:prefcture_id])
+    if post_params[:prefecture_id] != ""  && @posts != []
+      @posts = @posts.search_prefecture(post_params[:prefecture_id])
     end
     if post_params[:city_id] != "" && @posts != []
-      # binding.pry
       @posts = @posts.search_city(post_params[:city_id])
     end
     # binding.pry
@@ -74,7 +72,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image, :text, :prefcture_id, :city_id).merge(user_id: current_user.id)
+    params.require(:post).permit(:image, :text, :prefecture_id, :city_id).merge(user_id: current_user.id)
   end
   
 end
