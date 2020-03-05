@@ -18,7 +18,6 @@ $(function(){
 
 $(function($){
   $('.tabcontent > div').hide();
-
   $('.tabnav a').click(function () {
       $('.tabcontent > div').hide().filter(this.hash).fadeIn();
 

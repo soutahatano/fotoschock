@@ -144,7 +144,7 @@ a.move-btn:hover {
 .files-edit{
   height: 100px;
   width: 100px;
-  margin: 0 auto 10px;
+  margin: 0 auto 40px;
   position: relative;
 }
 
@@ -322,4 +322,18 @@ a.move-btn:hover {
 .user-follo{
   height: calc(100vh - 100px);
   overflow: scroll;
+}
+
+#user_prefecture_id{
+  margin-top: 5px;
+  height: 25px;
+  width: 200px;
+  text-align: center;
+}
+
+#user_city_id{
+  margin-top: 5px;
+  height: 25px;
+  width: 200px;
+  text-align: center;
 }

@@ -37,7 +37,7 @@ class ImagesUploader < CarrierWave::Uploader::Base
   # end
    
   version :thumb100 do
-    process resize_to_limit: [100, 100]
+    process resize_to_limit: [99, 99]
   end
  
   version :thumb50 do

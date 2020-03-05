@@ -55,9 +55,9 @@
             -#     タグ
           .post__action
             .good-number
-                %div{id: "good-post#{post.id}"}
-                  = post.goods.length
-                good!
+              %div{id: "good-post#{post.id}"}
+                = post.goods.length
+              good!
             .post__action__good-btn
               - unless current_user == post.user
                 - if post.good?(current_user)
