@@ -41,7 +41,7 @@
             .comment-modal{id: "modalp#{@post.id}", style: "display:none;"}
               = form_for [@comment] do |f|
                 = f.text_field :text, placeholder: 'コメントを入力', class: "comment-text"
-                = f.hidden_field :post_id, value: post.id
+                = f.hidden_field :post_id, value: @post.id
                 = f.submit "送信", class: "comment-btn"
   .user-show-comment
     - @comments.each do |comment|
@@ -60,9 +60,9 @@
               %i.coment__inf__icon.far.fa-comment-dots
             .comment-modal{id: "modalm#{comment.id}", style: "display:none;"}
               = form_for [@comment] do |f|
-                = f.text_field :text, placeholder: 'type a message'
+                = f.text_field :text, placeholder: 'コメントを入力', class: "comment-text"
                 = f.hidden_field :comment_id, value: comment.id
-                = f.submit "サブミット"
+                = f.submit "送信", class: "comment-btn"
             .icon-okiba
               %i.fas.fa-chevron-down{data: {comment: {id: comment.id}}}
         .coment__text
