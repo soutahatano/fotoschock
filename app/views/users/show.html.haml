@@ -50,9 +50,6 @@
                   = link_to do
                     .post__main__details__adress__pref-city
                       = post.city.name
-            -# .post__details__tag
-            -#   = link_to do
-            -#     タグ
           .post__action
             .good-number
               %div{id: "good-post#{post.id}"}
@@ -72,9 +69,9 @@
                   Comment
               .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
                 = form_for [@comment] do |f|
-                  = f.text_field :text, placeholder: 'type a message'
+                  = f.text_field :text, placeholder: 'コメントを入力', class: "comment-text"
                   = f.hidden_field :post_id, value: post.id
-                  = f.submit "サブミット"
+                  = f.submit "送信", class: "comment-btn"
   .user-show-dm
     .user-show-dm__messages
       - @messages.each do |message|

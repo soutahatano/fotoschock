@@ -101,9 +101,9 @@
                       Comment
                   .comment-modal{id: "modalp#{post.id}", style: "display:none;"}
                     = form_for [@comment] do |f|
-                      = f.text_field :text, placeholder: 'type a message'
-                      = f.hidden_field :post_id, value: post.id
-                      = f.submit "サブミット"
+                    = f.text_field :text, placeholder: 'コメントを入力', class: "comment-text"
+                    = f.hidden_field :post_id, value: post.id
+                    = f.submit "送信", class: "comment-btn"
                 .post__action__details
                   .post__action__details__adress
                     - if post.prefecture_id?
@@ -115,15 +115,16 @@
                         .pos__actiont__details__adress__pref-city
                           = post.city.name
   .search-right
-    = form_for(@post, url: search_posts_path, method: :get) do |f|
-      .search-right-label
-        = f.label :text, "タイトル"
-      = f.text_field :text
-      .search-right-label
-        = f.label :perfecture_id, "都道府県"
-      = f.select :prefecture_id, Prefecture.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
-      .search-right-label
-        = f.label :city_id, "市区町村"
-      = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
-      .search-right-label
-        = f.submit "検索"
+    .search-right__box
+      = form_for(@post, url: search_posts_path, method: :get) do |f|
+        .search-right-label
+          = f.label :text, "タイトル"
+        = f.text_field :text
+        .search-right-label
+          = f.label :perfecture_id, "都道府県"
+        = f.select :prefecture_id, Prefecture.all.map{|pf| [pf.name, pf.id]}, include_blank: :true
+        .search-right-label
+          = f.label :city_id, "市区町村"
+        = f.select :city_id, City.all.map{|ci| [ci.name, ci.id]}, include_blank: :true
+        .search-right-label
+          = f.submit "検索", class: "search-btn"

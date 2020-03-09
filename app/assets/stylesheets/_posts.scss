@@ -378,10 +378,16 @@ img {
   width: 100%;
   text-align: center;
   padding-top: 70px;
+  &__box{
+    background-color: #222222;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 .search-right-label{
   color: #dddddd;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .result{
@@ -410,4 +416,11 @@ img {
   height: 25px;
   width: 200px;
   text-align: center;
+}
+
+.search-btn{
+  background-color: #00ddff;
+  height: 30px;
+  width: 60px;
+  border: #222222 solid 1px;
 }
