@@ -52,5 +52,7 @@ $ rails s
 ***両環境にて***
 
 トップページ以外にアクセスするためにはログインが必須のため下記のテストユーザでログイン、またhが新規登録してください。
+
 email: test@test.test
+
 password: testtest
