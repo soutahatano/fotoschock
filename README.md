@@ -1,6 +1,12 @@
 # FotoShock
 
-gaiyou
+## 概要
+
+ ### 背景
+
+ ### 由来
+
+ ### コンセプト
 
 ## 🌐 App URL
  
