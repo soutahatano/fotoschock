@@ -39,12 +39,18 @@
  
 ***ローカル環境***
 
- ```
+```
 $ git clone https://github.com/soutahatano/fotoschock.git
 $ cd fotoschock
 $ rails db:create
 $ rails db:migrate
 $ rails db:seed
 $ rails s
+👉 http://localhost:3000
 ```
 
+***両環境にて***
+
+トップページ以外にアクセスするためにはログインが必須のため下記のテストユーザでログイン、またhが新規登録してください。
+email: test@test.test
+password: testtest
